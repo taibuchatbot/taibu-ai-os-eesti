@@ -1,7 +1,4 @@
-# The Three Ms of AI™ — Mindset, Method, Machine
-
-> *Adapted from The Three Ms of AI™. © 2026 Nate Herk. All rights reserved.*
-> *The Three Ms of AI™ is a trademark of Nate Herk.*
+# The Three Ms — Mindset, Method, Machine
 
 > *"The best automation is the one you barely notice. Start by eliminating what doesn't need to exist, then automate what's left with the least amount of AI possible."*
 
@@ -232,5 +229,3 @@ Each plugs into the 3Ms at specific points. Start here, branch out as you need d
 
 ---
 
-> *Adapted from The Three Ms of AI™. © 2026 Nate Herk. All rights reserved.*
-> *Full breakdown with diagrams and examples: [insert link to YouTube companion video / public-facing page when published].*

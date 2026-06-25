@@ -1,180 +1,174 @@
 ---
 name: audit
-description: Use when someone asks for an AIOS audit, asks to score their setup against the Four Cs, or says "is my AIOS working" / "audit my setup" / "find gaps in my AIOS". Produces a Four-Cs scoreboard with top-3 fixes ranked by leverage.
+description: Kasuta kui keegi küsib Taibu AI OS Eesti auditi kohta, soovib hinnata oma seadistust Nelja C vastu, või ütleb "kas minu Taibu AI OS töötab" / "auditeeri minu seadistust" / "leia lüngad minu Taibu AI OS-s". Toodab Nelja C skoorikaardi koos 3 parima parandusega, mis on järjestatud hoova järgi.
 ---
 
-## What this skill does
+## Mida see oskus teeb
 
-Runs the **Four Cs Audit** on the current Claude Code project. Reads (never writes) the project's operating manual, memory, skills, agents, MCPs, decisions, and references. Scores each of the Four Cs out of 25. Surfaces strengths and the top 3 leverage-weighted gaps with concrete next-step commands.
+Käitab **Nelja C Auditi** praegusel Claude Code'i projektil. Loeb (mitte kunagi ei kirjuta) projekti käitamisjuhendit, mälu, oskusi, agente, MCPsid, otsuseid ja viiteid. Hindab iga C-d 25 punktist. Toob esile tugevused ja 3 parima hootõhususe lünga koos konkreetsete järgmiste sammudega.
 
-**Scope is structural — "is the AIOS built right?"** It is NOT a capability planner. Capability gaps ("you could build a daily brief if you connected calendar") belong to `/level-up`. The audit answers: are the files, folders, registries, and connections in good shape?
+**Ulatus on struktuurne — "kas Taibu AI OS on õigesti üles ehitatud?"** See EI ole võimete planeerija. Võimete lüngad ("saaksid luua päevaülevaate kui ühendaksid kalendri") kuuluvad `/level-up`-i. Audit vastab: kas failid, kaustad, registrid ja ühendused on korras?
 
-First run is the baseline. Re-run weekly to watch the score climb. That's the compounding hook.
+Esimene käivitamine on lähteväärtus. Käivita iganädalaselt, et skoori kasvades jälgida. See on liitintressikonks.
 
-## Today's context
+## Tänane kontekst
 
-- **Date:** !`date +%Y-%m-%d`
-- **Project root:** the current working directory
+- **Kuupäev:** !`date +%Y-%m-%d`
+- **Projekti juur:** praegune töökataloogi
 
-## The Four Cs (scored 25 each = 100 total)
+## Neli C-d (25 punkti igaüks = 100 kokku)
 
-| Layer | Test |
+| Kiht | Test |
 |---|---|
-| **Context** | Knows the business — identity, team, voice, decisions, references |
-| **Connections** | Reaches the user's stuff — MCPs, integrations, data sources |
-| **Capabilities** | Knows how to do work — skills + agents |
-| **Cadence** | Runs without being asked — schedules, hooks, recurring rituals |
+| **Kontekst** | Teab äri — identiteet, meeskond, hääl, otsused, viited |
+| **Ühendused** | Jõuab kasutaja andmeteni — MCPd, integratsioonid, andmeallikad |
+| **Võimed** | Teab, kuidas tööd teha — oskused + agendid |
+| **Kadents** | Töötab ilma küsimata — ajakavad, hooks, korduvad rituaalid |
 
-## Execution
+## Täitmine
 
-### Step 1: Discover the project shape
+### Samm 1: Avasta projekti kuju
 
-The audit looks for **patterns and intent**, not exact paths. File names vary. Use Glob and Read to check:
+Audit otsib **mustreid ja kavatsust**, mitte täpseid teid. Failinimed varieeruvad. Kasuta Glob ja Read kontrollimiseks:
 
-**Operating manual:** `CLAUDE.md` (root), `CLAUDE.local.md` (gitignored).
-**Memory:** `MEMORY.md` (root), `~/.claude/projects/<id>/memory/MEMORY.md`, or `memory/` folder.
-**Skills:** `.claude/skills/*/SKILL.md` — count + frontmatter.
-**Agents:** `.claude/agents/*.md` — count + frontmatter.
-**Connection mechanisms** (any of these = "reachable"):
-- MCPs: `.mcp.json`, `.claude/settings.json` (mcpServers key), `.claude/settings.local.json`
-- API scripts: `scripts/*.py|.js|.ts` documented in CLAUDE.md
-- Export pipelines: `data/`, `imports/`, `exports/` with refresh script + last-run timestamp
-- API keys + reference guide: `.env` entries + corresponding `references/{tool}-api.md`
+**Käitamisjuhend:** `CLAUDE.md` (juur), `CLAUDE.local.md` (gitignored).
+**Mälu:** `MEMORY.md` (juur), `~/.claude/projects/<id>/memory/MEMORY.md` või `memory/` kaust.
+**Oskused:** `.claude/skills/*/SKILL.md` — arv + frontmatter.
+**Agendid:** `.claude/agents/*.md` — arv + frontmatter.
+**Ühendusmehhanismid** (ükski neist = "kättesaadav"):
+- MCPd: `.mcp.json`, `.claude/settings.json` (mcpServers võti), `.claude/settings.local.json`
+- API skriptid: `scripts/*.py|.js|.ts` dokumenteeritud CLAUDE.md-s
+- Ekspordi torujuhtmed: `data/`, `imports/`, `exports/` värskendamisskriptiga + viimase käivitamise ajatempliga
+- API võtmed + viidejuhend: `.env` kirjed + vastav `references/{tööriist}-api.md`
 
-**Connections registry:** `connections.md` (anywhere).
-**Reference guides:** `references/{tool}-api.md`, `references/*-reference.md`, or equivalent.
-**Decisions:** `decisions/log.md`, `decisions.md`, or any append-only decisions file.
-**References / SOPs:** `references/`, `docs/`, `sops/` folders.
-**Templates:** `templates/`, `.claude/templates/`.
-**Hooks / scheduled jobs:** `.claude/settings.json` hooks key, or skill names matching `morning-*`, `weekly-*`, `daily-*`, `monthly-*`, `standup`.
+**Ühenduste register:** `connections.md` (kuskil).
+**Viidejuhendid:** `references/{tööriist}-api.md`, `references/*-reference.md` või samaväärne.
+**Otsused:** `decisions/log.md`, `decisions.md` või mis tahes järjestikune otsustefail.
+**Viited / SOPid:** `references/`, `docs/`, `sops/` kaustad.
+**Mallid:** `templates/`, `.claude/templates/`.
+**Hookid / ajastatud tööd:** `.claude/settings.json` hookide võti, või oskusenimed, mis vastavad `morning-*`, `weekly-*`, `daily-*`, `monthly-*`, `standup`.
 
-Don't penalize for non-canonical names if equivalent intent is captured elsewhere.
+Ära karista mittekanoonilistel nimedel kui samaväärne kavatsus on mujal jäädvustatud.
 
-### Step 2: Score each C (25 points each)
+### Samm 2: Hinda iga C (25 punkti igaüks)
 
-#### Context (25 pts)
+#### Kontekst (25 punkti)
 
-| Criterion | Points | How to detect |
+| Kriteerium | Punktid | Kuidas tuvastada |
 |---|---|---|
-| Operating manual exists and is substantive (>200 words) | 5 | Read CLAUDE.md, count words |
-| Identity / role / voice captured | 5 | CLAUDE.md mentions who the user is + role/mission, OR `.claude/rules/*.md` exists |
-| Persistent memory exists with multiple entries | 5 | MEMORY.md exists with >3 entries, OR `memory/` has >3 files |
-| Reference docs exist | 5 | `references/`, `docs/`, or `sops/` has ≥1 file |
-| Decisions captured | 5 | `decisions/log.md` or equivalent has ≥1 entry |
+| Käitamisjuhend eksisteerib ja on sisukas (>200 sõna) | 5 | Loe CLAUDE.md, loe sõnu |
+| Identiteet / roll / hääl jäädvustatud | 5 | CLAUDE.md mainib kes kasutaja on + roll/missioon, VÕI `.claude/rules/*.md` eksisteerib |
+| Püsiv mälu eksisteerib mitme kirjega | 5 | MEMORY.md eksisteerib >3 kirjega, VÕI `memory/`-s on >3 faili |
+| Viitedokumendid eksisteerivad | 5 | `references/`, `docs/` või `sops/`-s on ≥1 fail |
+| Otsused jäädvustatud | 5 | `decisions/log.md` või samaväärsel on ≥1 kirje |
 
-#### Connections (25 pts) — domain-aware, mechanism-agnostic
+#### Ühendused (25 punkti) — domeeniteadlik, mehhanismist sõltumatu
 
-A "reachable" connection counts via ANY mechanism: MCP, script, export pipeline, or `.env` key + `references/{tool}-api.md`. The kit is API-first; the audit doesn't prefer MCPs.
+"Kättesaadav" ühendus loeb MIS TAHES mehhanismi kaudu: MCP, skript, ekspordi torujuhe või `.env` võti + `references/{tööriist}-api.md`.
 
-**The 7 Tier-1 Universal Data Domains:**
+**7 Taseme-1 Universaalset Andmedomeeni:**
 
-| # | Domain | Examples |
+| # | Domeen | Näited |
 |---|---|---|
-| 1 | Revenue / Financials | Stripe, Skool, GoHighLevel, QuickBooks, Looker |
-| 2 | Customer interactions | HubSpot, Salesforce, Gmail-as-CRM, Skool DMs |
-| 3 | Calendar | Google Cal, Outlook, Calendly |
-| 4 | Communication | Gmail, Outlook, Slack, Teams |
-| 5 | Project / task tracking | ClickUp, Asana, Linear, Notion DB, Jira |
-| 6 | Meeting intelligence | Granola, Otter, Fireflies, Gong, Zoom |
-| 7 | Knowledge / files | Notion, Drive, Dropbox, Confluence, SharePoint |
+| 1 | Tulu / Raamatupidamine | Merit Aktiva, Stripe, Montonio, QuickBooks |
+| 2 | Kliendisuhted | Pipedrive, HubSpot, Salesforce, Gmail CRM-ina |
+| 3 | Kalender | Google Cal, Outlook, Calendly |
+| 4 | Kommunikatsioon | Gmail, Outlook, Slack, Teams |
+| 5 | Projekti / ülesannete jälgimine | ClickUp, Asana, Linear, Notion DB, Jira |
+| 6 | Koosolekute intelligents | Granola, Otter, Fireflies, Gong, Zoom |
+| 7 | Teadmus / failid | Notion, Drive, Dropbox, Confluence, SharePoint |
 
-**Tier-2 (bonus):** AI service API keys (OpenRouter, Anthropic, OpenAI), decisions/history, content/publishing.
+**Tase-2 (boonus):** AI teenuse API võtmed (Anthropic, OpenAI), otsused/ajalugu, sisu/avaldamine.
 
-| Criterion | Points | How to detect |
+| Kriteerium | Punktid | Kuidas tuvastada |
 |---|---|---|
-| Tier-1 domain coverage | 10 | 1.4 pts per tier-1 domain reachable. Round to nearest 0.5. Cap 10. |
-| Reference guide presence | 5 | -1 per connected tool with no `references/{tool}-api.md`. Floor 0. |
-| Auth / pipeline freshness | 5 | -1 per connection in `needs-auth`/`expired` state, or script with no run within 30 days. Floor 0. |
-| Documentation in `connections.md` | 3 | 0 if missing; 1 sparse; 2 most; 3 covers all reachable. |
-| Read-AND-write balance | 2 | At least one connection can WRITE (send email, post update, etc.). 0 if all read-only — the AIOS is a viewer not an OS. |
+| Taseme-1 domeeni katvus | 10 | 1,4 punkti iga kättesaadava taseme-1 domeeni kohta. Ümarda lähima 0,5-ni. Maks 10. |
+| Viidejuhendi olemasolu | 5 | -1 iga ühendatud tööriista kohta ilma `references/{tööriist}-api.md`-ta. Põrand 0. |
+| Auth / torujuhtme värskus | 5 | -1 iga `vajab-authi`/`aegunud` olekus ühenduse kohta, või skript ilma käivitamiseta 30 päeva jooksul. Põrand 0. |
+| Dokumentatsioon `connections.md`-s | 3 | 0 kui puudub; 1 hõre; 2 enamik; 3 katab kõik kättesaadavad. |
+| Loe-JA-kirjuta tasakaal | 2 | Vähemalt üks ühendus saab KIRJUTADA (saada e-maili, postitada uuenduse jne). 0 kui kõik on ainult lugemine — Taibu AI OS on vaataja, mitte OS. |
 
-#### Capabilities (25 pts)
+#### Võimed (25 punkti)
 
-| Criterion | Points | How to detect |
+| Kriteerium | Punktid | Kuidas tuvastada |
 |---|---|---|
-| 3+ skills installed | 10 | Count `.claude/skills/*/SKILL.md` |
-| 1+ user-built skill | 10 | Skill names not in: `onboard`, `audit`, `level-up`, `skill-creator`, `skill-builder`, `decision`, `connect`, `connect-check`, `memory-prune`, `scaffold-skill`, `scaffold-agent`, `draft`, `standup` (canonical AIS-OS + Anthropic shipped skills) |
-| 1+ agent defined | 5 | Count `.claude/agents/*.md` ≥ 1 |
+| 3+ oskust paigaldatud | 10 | Loe `.claude/skills/*/SKILL.md` |
+| 1+ kasutaja loodud oskus | 10 | Oskusenimed, mis ei ole: `onboard`, `audit`, `level-up`, `skill-creator`, `skill-builder`, `decision`, `connect`, `connect-check`, `memory-prune`, `scaffold-skill`, `scaffold-agent`, `draft`, `standup` (kanooniline Taibu AI OS + Anthropic installeeritud oskused) |
+| 1+ agent defineeritud | 5 | Loe `.claude/agents/*.md` ≥ 1 |
 
-#### Cadence (25 pts)
+#### Kadents (25 punkti)
 
-| Criterion | Points | How to detect |
+| Kriteerium | Punktid | Kuidas tuvastada |
 |---|---|---|
-| 1+ recurring/scheduled trigger | 10 | `.claude/settings.json` hooks, OR skill name matches `morning-*` / `daily-*` / `weekly-*` / `monthly-*` / `standup` |
-| Recent activity / usage signal | 10 | Files in `.claude/skills/` modified within 30 days, OR `decisions/log.md` has entry within 30 days |
-| Templates folder populated | 5 | `templates/` or `.claude/templates/` has ≥1 file |
+| 1+ korduv/ajastatud käivitaja | 10 | `.claude/settings.json` hookid, VÕI oskusenimi vastab `morning-*` / `daily-*` / `weekly-*` / `monthly-*` / `standup` |
+| Hiljutine aktiivsus / kasutuse signaal | 10 | Failid `.claude/skills/`-s muudetud 30 päeva jooksul, VÕI `decisions/log.md`-s on kirje 30 päeva jooksul |
+| Mallide kaust täidetud | 5 | `templates/` või `.claude/templates/`-s on ≥1 fail |
 
-### Step 3: Identify top 3 gaps by leverage
+### Samm 3: Tuvasta 3 parimat lünka hoova järgi
 
-For each criterion that lost points: leverage = (points lost) × (impact multiplier).
+Iga kriteerium, mis kaotas punkte: hoob = (kaotatud punktid) × (mõjukordaja).
 
-**Impact multipliers:**
-- 0 tier-1 domains reachable: **4x** (AIOS is blind to the business)
-- Operating manual missing or thin: **3x** (foundation)
-- ≤2 tier-1 domains reachable: **3x** (Connections is the gateway to live data)
-- 0 skills: **2x** (no Capabilities = no AIOS)
-- No recurring trigger: **2x** (no Cadence = no autonomy)
-- All connections read-only: **2x** (viewer, not an OS)
-- 0 reference guides for connected tools: **1.5x** (every future skill re-researches the same APIs)
-- No decisions log: **1.5x**
-- All others: **1x**
+**Mõjukordajad:**
+- 0 taseme-1 domeeni kättesaadav: **4x** (Taibu AI OS on ärist pime)
+- Käitamisjuhend puudub või on õhuke: **3x** (alus)
+- ≤2 taseme-1 domeeni kättesaadav: **3x** (Ühendused on elusate andmete värav)
+- 0 oskust: **2x** (pole Võimeid = pole Taibu AI OS-i)
+- Pole korduvat käivitajat: **2x** (pole Kadensi = pole autonoomsust)
+- Kõik ühendused on ainult lugemine: **2x** (vaataja, mitte OS)
+- 0 viidejuhendit ühendatud tööriistadele: **1,5x**
+- Pole otsuste logi: **1,5x**
+- Kõik muud: **1x**
 
-Sort gaps by leverage descending. Take top 3. For each, write a one-line concrete next step:
-- **Need a new skill?** Recommend `skill-creator` (Anthropic) or `skill-builder` (if local), or "write SKILL.md at `.claude/skills/<name>/SKILL.md` with YAML frontmatter."
-- **Need to log a decision?** "Append to `decisions/log.md`."
-- **Need to reach a tier-1 domain?** Prefer API+script (write `scripts/{tool}_api.py` + save `references/{tool}-api.md`). Recommend `claude mcp add` only if no API path exists.
-- **Connected tool missing a reference guide?** "Research the API once, save endpoints + auth + common queries to `references/{tool}-api.md`."
-- **Need a recurring trigger?** "Add a hook to `.claude/settings.json`, or write a skill named `daily-*` you run each morning."
+Sordi lüngad hoova järgi kahanevalt. Võta 3 parimat. Iga kohta kirjuta üherealise konkreetse järgmise sammuna.
 
-### Step 4: Output the report
+### Samm 4: Väljasta aruanne
 
-Print directly in chat (Markdown). Format:
+Prindi otse vestlusesse (Markdown). Formaat:
 
 ```
-# AIOS Audit — {date}
-**Score: {total}/100** ({stage})
+# Taibu AI OS Audit — {kuupäev}
+**Skoor: {kokku}/100** ({etapp})
 
-Stage thresholds:
-- 0-39 → Stage 0: Foundation
-- 40-69 → Stage 1: Built
-- 70-89 → Stage 2: Compounding
-- 90-100 → Stage 3: Autonomous
+Etapi läved:
+- 0-39 → Etapp 0: Alus
+- 40-69 → Etapp 1: Ehitatud
+- 70-89 → Etapp 2: Liitintress
+- 90-100 → Etapp 3: Autonoomne
 
-## Scoreboard
+## Skoorikaart
 
-Context        {bar}  {n}/25  {label}
-Connections    {bar}  {n}/25  {label}
-Capabilities   {bar}  {n}/25  {label}
-Cadence        {bar}  {n}/25  {label}
+Kontekst        {riba}  {n}/25  {silt}
+Ühendused       {riba}  {n}/25  {silt}
+Võimed          {riba}  {n}/25  {silt}
+Kadents         {riba}  {n}/25  {silt}
 
-(bar = ## per 5pts; label = "Strong" ≥20, "Solid" 15-19, "Thin" 8-14, "Missing" <8)
+(riba = ## iga 5 punkti kohta; silt = "Tugev" ≥20, "Solid" 15-19, "Õhuke" 8-14, "Puudub" <8)
 
-## Strengths
-- {1-3 short bullets from highest-scoring criteria}
+## Tugevused
+- {1-3 lühikest täppi kõrgeima skooriga kriteeriumidest}
 
-## Top 3 Gaps (ranked by leverage)
-1. **{gap name}** (-{points} × {multiplier})
-   → {concrete next-step}
-2. **{gap name}** (-{points} × {multiplier})
-   → {concrete next-step}
-3. **{gap name}** (-{points} × {multiplier})
-   → {concrete next-step}
+## 3 parimat lünka (järjestatud hoova järgi)
+1. **{lünga nimi}** (-{punktid} × {kordaja})
+   → {konkreetne järgmine samm}
+2. **{lünga nimi}** (-{punktid} × {kordaja})
+   → {konkreetne järgmine samm}
+3. **{lünga nimi}** (-{punktid} × {kordaja})
+   → {konkreetne järgmine samm}
 
-## Suggested next: {single most leveraged action}
+## Soovituslik järgmine: {üks kõige rohkem hoobasem tegevus}
 
 ---
-Structural gaps only. To explore CAPABILITY gaps (what your AIOS could DO that it can't yet), run /level-up after this audit.
+Ainult struktuurilised lüngad. VÕIMETE lünkade uurimiseks (mida sinu Taibu AI OS TEHA saaks, aga ei saa), käivita /level-up pärast seda auditit.
 ```
 
-### Step 5: Offer to save the report
+### Samm 5: Paku aruande salvestamist
 
-After printing, ask: "Save this audit to `audits/audit-{date}.md` so you can track score over time?" If yes, write it (creating `audits/` folder if needed). This is the only writable side effect.
+Pärast printimist küsi: "Salvestada see audit `audits/audit-{kuupäev}.md`-sse, et skoori ajas jälgida?" Kui jah, kirjuta see (loo `audits/` kaust vajadusel). See on ainus kirjutatav kõrvalmõju.
 
-## Notes
+## Märkused
 
-- **Read-only by default.** Never modify CLAUDE.md, memory, skills, or any project files. Only optional write is the audit report.
-- **Be flexible about file names.** Don't penalize for using non-canonical names if intent is captured.
-- **Be honest, not generous.** A 95/100 is a flex. Most setups land 40-70.
-- **Don't suggest skills that don't exist.** Point at what's actually available.
-- **Speed matters.** Report in under 60 seconds wall-clock. Read targeted files, count skill folders without reading each fully (frontmatter only).
-- **Cadence detection is fuzzy.** Infer from skill names if hooks/cron data isn't cleanly available.
+- **Ainult lugemine vaikimisi.** Ära muuda kunagi CLAUDE.md, mälu, oskusi ega muid projektifaile. Ainus valikuline kirjutamine on auditi aruanne.
+- **Ole failinimede osas paindlik.** Ära karista mittekanoonilistel nimedel kui kavatsus on jäädvustatud.
+- **Ole aus, mitte helde.** 95/100 on uhkeldamine. Enamik seadistusi maandub 40-70.
+- **Ära soovita oskusi, mida pole olemas.** Osuta sellele, mis tegelikult saadaval on.
+- **Kiirus on oluline.** Aruanne alla 60 sekundi reaalajas. Loe sihitud faile, loe oskuste kaustu ilma iga faili täielikult lugemata (ainult frontmatter).

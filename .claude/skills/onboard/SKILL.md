@@ -1,105 +1,107 @@
 ---
 name: onboard
-description: Use on Day 1 of an AIS-OS install, when someone says "set me up", "onboard me", "let's get started", "fill in my AIOS", or has just cloned the kit. Combined wizard — runs the 7-question intake AND scaffolds the Day-1 file set at the end. Idempotent — re-run any time after editing aios-intake.md.
+description: Kasuta Taibu AI OS Eesti 1. päeval, kui keegi ütleb "seadista mind", "alustame", "täida minu Taibu AI OS" või on just repo klooninud. Kombineeritud viisard — käitab 7-küsimuse intervjuu JA seadistab 1. päeva failistruktuuri lõpus. Idempotentne — käivita uuesti igal ajal pärast aios-intake.md muutmist.
 ---
 
-## What this skill does
+## Mida see oskus teeb
 
-Single combined wizard. Reads or writes `aios-intake.md` (the canonical intake), conducts the 7-question interview if the file isn't filled, then scaffolds the Day-1 file set inline at the end of the run. No separate `/scaffold-from-intake` skill — this is one flow.
+Üks kombineeritud viisard. Loeb või kirjutab `aios-intake.md` (kanooniline sisestus), viib läbi 7-küsimuse intervjuu kui fail pole täidetud, seejärel seadistab 1. päeva failistruktuuri. Eraldi `/scaffold-from-intake` oskust pole — see on üks voog.
 
-**The wow moment:** at the end, suggest the closing prompt *"Try this — ask me: what should I focus on this week?"* The user runs it once. That's the wow. There's no `/today` skill to save — the prompt itself plants the Mindset framework (Default Shift) for them to internalize.
+**Vau-moment:** lõpus soovita sulgemisprompt *"Proovi seda — küsi minult: millele peaksin sel nädalal keskenduma?"* Kasutaja käivitab selle üks kord. See on vau. Prompt ise istutab Mõtteviisi raamistiku (Vaikimisi Nihe) nende jaoks, et nad selle sisestaksid.
 
-## When NOT to run this
+## Millal MITTE käivitada
 
-- If the user has already onboarded and wants to refresh: still run, but skip questions already answered (idempotent).
-- If the user wants to add a new connection: that's not onboarding — point them at `connections.md` to edit directly, or schedule a `/level-up` Phase 2 walk.
+- Kui kasutaja on juba onboardinud ja tahab värskendada: ikka käivita, aga jäta juba vastatud küsimused vahele (idempotentne).
+- Kui kasutaja soovib lisada uue ühenduse: see pole onboarding — suuna nad otse `connections.md` muutmisele.
 
-## Execution
+## Täitmine
 
-### Step 1: Read the intake
+### Samm 1: Loe sisestust
 
-Read `aios-intake.md`. Check which Q1-Q7 sections have content vs. `[Your answer here]` placeholders.
+Loe `aios-intake.md`. Kontrolli, millised K1-K7 sektsioonid on täidetud vs. `[Sinu vastus siia]` kohahoidjatega.
 
-- **All filled** → skip Step 2, jump to Step 3 (scaffold).
-- **Some filled** → ask the user: "I see Q1, Q3, Q4 are answered. Want to fill the rest now, or scaffold from what's there?" Their call.
-- **None filled (fresh clone)** → run Step 2 conversationally.
+- **Kõik täidetud** → jäta Samm 2 vahele, mine Samm 3-sse (seadistus).
+- **Mõned täidetud** → küsi kasutajalt: "Näen, et K1, K3, K4 on vastatud. Kas täita ülejäänud nüüd, või seadistada olemasolevaga?" Nende otsus.
+- **Mitte midagi täidetud (värske kloon)** → käivita Samm 2 vestluslikult.
 
-### Step 2: The interview (7 questions, hard cap)
+### Samm 2: Intervjuu (7 küsimust, kõva piir)
 
-Ask one at a time. Write each answer into `aios-intake.md` as you go (so the user can resume if interrupted).
+Küsi ükshaaval. Kirjuta iga vastus kohe `aios-intake.md`-sse (et kasutaja saaks katkestuse korral jätkata).
 
-**Q1 — Who are you, what do you sell, who do you sell it to?**
-Identity, offer, ICP. One paragraph each is fine.
+**K1 — Kes sa oled, mida müüd, kellele müüd?**
+Identiteet, pakkumine, ideaalne klient. Üks lõik kummagi kohta on sobiv.
 
-**Q2 — Paste 1-2 things you've written recently. Don't edit them.**
-*This is the only question with a hard rule.* Voice samples MUST be pasted, not typed mid-conversation. If the user starts typing fresh prose, refuse:
+**K2 — Kleebi 1-2 asja, mida oled hiljuti kirjutanud. Ära muuda neid.**
+*See on ainus küsimus kõva reegli. Häälenäidised PEAVAD olema kleebitud, mitte vestluse käigus kirjutatud. Kui kasutaja hakkab kirjutama uut proosat, keeldu:*
 
-> *"Stop — paste it raw. If you type it here while we're talking, the sample is already shaped by our conversation. Open your last email or LinkedIn post in another tab and paste the unedited text. This is the one rule I can't bend."*
+> *"Stopp — kleebi see toorelt. Kui kirjutad selle siia meie vestluse ajal, on näidis juba meie vestluse poolt kujundatud. Ava oma viimane e-mail või LinkedIn postitus teises vahekaardis ja kleebi muutmata tekst. See on ainus reegel, mida ei saa paindada."*
 
-Ask for two samples. One email, one post. Or two of either.
+Küsi kaht näidist. Üks e-mail, üks postitus. Või kaks kummaski.
 
-**Q3 — What are your 2-3 biggest priorities for the next 90 days?**
-Quarterly priorities. Push back if they say "grow my business" — make them name a number, a deadline, or a deliverable.
+**K3 — Mis on sinu 2-3 suurimat prioriteeti järgmiseks 90 päevaks?**
+Kvartaliprioriteedid. Lükka tagasi, kui nad ütlevad "kasvatada äri" — pane nad nimetama arv, tähtaeg või tulemus.
 
-**Q4 — Where does revenue actually land, and where is it tracked?**
-Multiple answers OK. Map to Tier-1 Domain 1 (Revenue/Financials).
+**K4 — Kuhu tulu tegelikult laekub ja kus seda jälgitakse?**
+Mitu vastust sobib. Kaardista Taseme-1 domeeni 1-sse (Tulu/Raamatupidamine).
+Eesti valikud: Merit Aktiva (arveldus + raamatupidamine), Montonio (pangalink maksed).
 
-**Q5 — Where do you talk to customers, your team, and the outside world day-to-day?**
-Email (Gmail/Outlook), Slack/Teams/Discord, DMs. Map to Domains 2 + 4.
+**K5 — Kus räägid klientide, meeskonna ja välismaailmaga igapäevaselt?**
+E-mail (Gmail/Outlook), Slack/Teams, DM-id. Kaardista domeenidesse 2 + 4.
+Eesti valikud: Pipedrive CRM-iks.
 
-**Q6 — Where do meeting recordings, notes, and important docs live?**
-Map to Domains 6 + 7.
+**K6 — Kus asuvad koosolekusalvestused, märkmed ja olulised dokumendid?**
+Kaardista domeenidesse 6 + 7.
 
-**Q7 — What's the one task that eats your week, and where do you currently track work?**
-Capture top_pain (used by `/level-up` Day-14) + Domain 5 (tasks).
+**K7 — Mis ülesanne sööb sinu nädala ära ja kus jälgid tööd praegu?**
+Jäädvusta top_pain (kasutatakse `/level-up` 14. päeval) + domeen 5 (ülesanded).
 
-Domain 3 (Calendar) is auto-inferred from Q5: Gmail → Google Cal; Outlook → Outlook Cal. Confirm in Step 3.
+Domeen 3 (Kalender) järeldatakse automaatselt K5-st: Gmail → Google Cal; Outlook → Outlook Cal. Kinnita Samm 3-s.
 
-### Step 3: Scaffold the Day-1 file set
+### Samm 3: Seadista 1. päeva failistruktuur
 
-Once the intake is complete, generate these files (or update if re-running). Back up originals to `archives/intake-{YYYY-MM-DD-HHMM}/` if any exist.
+Kui sisestus on valmis, genereeri need failid (või uuenda uuesti käivitamisel). Varukoopiad originaalidest `archives/intake-{AAAA-KK-PP-HHMM}/` kui need eksisteerivad.
 
-1. **`context/about-me.md`** — from Q1 (identity, role) + Q7 (top_pain). One short paragraph each.
-2. **`context/about-business.md`** — from Q1 (offer, ICP) + Q4 (revenue model). One paragraph.
-3. **`context/priorities.md`** — from Q3. Numbered list, one line per priority.
-4. **`references/voice.md`** — from Q2. Paste samples verbatim with a short header explaining their use ("Match this register when drafting; don't fake voice on external content without showing me first").
-5. **`connections.md`** — populate the 7-row table from Q4-Q7 answers. Each row gets `mechanism: not yet connected`, `auth: —`, `last checked: —`. The user wires connections on Day 2.
-6. **`CLAUDE.md`** — fill all `{{...}}` placeholders. Substitute the user's name, stated priority, voice register summary, and a brief connections summary.
+1. **`context/about-me.md`** — K1-st (identiteet, roll) + K7-st (top_pain). Üks lühike lõik kummagi kohta.
+2. **`context/about-business.md`** — K1-st (pakkumine, ideaalne klient) + K4-st (tulumuodel). Üks lõik.
+3. **`context/priorities.md`** — K3-st. Nummerdatud loend, üks rida prioriteedi kohta.
+4. **`references/voice.md`** — K2-st. Kleebi näidised sõna-sõnalt lühikese päisega, mis selgitab nende kasutust ("Kasuta seda registrit mustandites; ära võltsida häält välise sisu jaoks ilma mulle näitamata").
+5. **`connections.md`** — täida 7-rea tabel K4-K7 vastustest. Iga rida saab `mehhanism: pole veel ühendatud`, `auth: —`, `viimati kontrollitud: —`. Kasutaja ühendab tööriistad 2. päeval.
+6. **`CLAUDE.md`** — täida kõik `{{...}}` kohahoidjad. Asenda kasutaja nimi, prioriteet, hääleregistri kokkuvõte, ühenduste lühikokkuvõte ja keel (küsi kui pole mainitud — "Eesti või inglise?").
 
-### Step 4: The closing screen
+### Samm 4: Sulgemisekraan
 
-Print one screen. Three lines max:
+Prindi üks ekraan. Maksimaalselt kolm rida:
 
 ```
-✓ Day 1 done. Your AIOS knows who you are, what you sell, what matters this quarter, and how you sound.
+✓ 1. päev tehtud. Sinu Taibu AI OS teab, kes sa oled, mida müüd, mis on prioriteedid ja kuidas kõlad.
 
-Today: ask me — "what should I focus on this week?"
-Tomorrow: pick one tool from connections.md and wire it up (manual MCP install or write a small API script + save references/{tool}-api.md).
-Day 7: run /audit to see your score.
+Täna: küsi minult — "millele peaksin sel nädalal keskenduma?"
+Homme: vali üks tööriist connections.md-st ja ühenda see (MCP install või kirjuta väike API skript + salvesta references/{tööriist}-api.md).
+7. päev: käivita /audit, et näha oma skoori.
 ```
 
-When the user runs the closing prompt ("what should I focus on this week?"), respond using only the new context files. Hit:
-- 3-bullet priority list, in their voice register from Q2
-- Each bullet ties back to a stated 90-day priority from Q3
-- Final line: *"If I had to pick one thing for Monday, it'd be [X], because [reason from priorities]. Want me to draft the first email? And — where could the Default Shift apply here? To what extent could AI be leveraged on this task?"*
+Kui kasutaja käivitab sulgemispromoti ("millele peaksin sel nädalal keskenduma?"), vasta kasutades ainult uusi kontekstifaile. Hitti:
+- 3-punktiline prioriteetide loend, nende hääleregistris K2-st
+- Iga punkt on seotud 90-päeva prioriteediga K3-st
+- Viimane rida: *"Kui peaksin ühte asja esmaspäevaks valima, oleks see [X], sest [põhjus prioriteetidest]. Kas soovid, et koostan esimese e-maili? Ja — kus saaks Vaikimisi Nihe siin rakenduda? Mil määral saaks AI-d sellel ülesandel kasutada?"*
 
-The Default Shift question seeds the Mindset framework before `/level-up` formally introduces it on Day 14.
+Vaikimisi Nihe küsimus seob Mõtteviisi raamistiku enne kui `/level-up` selle ametlikult 14. päeval tutvustab.
 
-## Critical implementation rules
+## Kriitilised teostusreeglid
 
-1. **The 7-question cap is non-negotiable.** Don't add Q8 in conversation.
-2. **Voice paste cannot be skipped.** If the user types samples mid-chat, refuse and tell them to paste from real writing.
-3. **One-shot scaffold.** After Step 2 ends, write Step 3 files in a single batch. No multi-turn confirmation. The user iterates by editing `aios-intake.md` and re-running.
-4. **Idempotent.** Re-running with an edited intake refreshes context files; backs up originals to `archives/intake-{ts}/`. Skips questions already answered unless the user wants to revise.
-5. **Closing screen is three lines.** Not a menu.
-6. **No extra skills generated.** Don't scaffold `/today`, `/draft`, `/connect`, etc. The kit ships 3 skills; the user authors more via `/level-up`.
-7. **Read-only on `references/3ms-framework.md`.** It already ships in the kit. Don't overwrite.
-8. **No `.env` writes.** Don't ask for API keys on Day 1. Connections come Day 2.
+1. **7-küsimuse piir on läbirääkimatu.** Ära lisa vestlusesse K8-t.
+2. **Hääle kleepimist ei saa vahele jätta.** Kui kasutaja kirjutab näidiseid vestluse ajal, keeldu ja palu kleepida pärisest kirjutisest.
+3. **Ühekordne seadistus.** Pärast Samm 2 lõppu kirjuta Samm 3 failid ühe partiina. Ilma mitme-voorulise kinnituseta.
+4. **Idempotentne.** Muudetud sisestusega uuesti käivitamine värskendab kontekstifaile; teeb varukoopiad originaalidest `archives/intake-{ts}/`. Jätab vahele juba vastatud küsimused, välja arvatud kui kasutaja soovib üle vaadata.
+5. **Sulgemisekraan on kolm rida.** Mitte menüü.
+6. **Ei genereerita lisaoskusi.** Ära seadista `/today`, `/draft`, `/connect` jne. Komplekt sisaldab 3 oskust; kasutaja loob rohkem `/level-up` kaudu.
+7. **Ainult lugemine `references/3ms-framework.md`-s.** See on juba komplektis. Ära kirjuta üle.
+8. **Ei kirjutata `.env`-i.** Ära küsi API võtmeid 1. päeval. Ühendused tulevad 2. päeval.
 
-## Verification (for the implementer)
+## Verificeerimine (teostajale)
 
-- Cold-test: clone a fresh kit, run `/onboard`, fill 7 answers, scaffold runs, ask the wow prompt, response cites Q1 + Q3 + Q7 specifically. Generic = fail.
-- Idempotency: re-run `/onboard` with one Q3 priority changed. Expected: only `context/priorities.md` and `CLAUDE.md`'s priority section update; backup created in `archives/intake-{ts}/`.
-- Voice rejection: type a sample mid-chat. Expected: skill refuses, asks for paste.
+- Külm test: klooni värske komplekt, käivita `/onboard`, täida 7 vastust, seadistus käivitatakse, küsi vau-prompt, vastus viitab K1 + K3 + K7-le spetsiifiliselt. Üldine = ebaõnnestumine.
+- Idempotentsus: käivita `/onboard` uuesti ühe K3 prioriteediga muudetuna. Oodatav: ainult `context/priorities.md` ja `CLAUDE.md` prioriteedisektsioon uuenevad; varukoopia luuakse `archives/intake-{ts}/`.
+- Hääle keeldumine: kirjuta näidis vestluse ajal. Oodatav: oskus keeldub, palub kleepida.
 
-> *Adapted from The Three Ms of AI™ © 2026 Nate Herk. The Mindset language used in the closing screen comes from `references/3ms-framework.md`.*
+> *Taibu AI OS Eesti — loonud Martti Mäger / MGR Tech Solutions OÜ. © 2026 MGR Tech Solutions OÜ.*

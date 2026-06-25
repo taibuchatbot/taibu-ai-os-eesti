@@ -1,85 +1,87 @@
-# AIS-OS Intake
+# Taibu AI OS Eesti — Sisestusleht
 
-This is the source-of-truth file for your AIOS. Fill it in by typing, voice-pasting (Wispr Flow / OS dictation), or running `/onboard` for a guided conversation. Whichever mode, this file is what `/onboard` reads to scaffold your Day-1 setup.
+See on sinu Taibu AI OS allikasfail. Täida see kirjutamise, häälega dikteerimise (Wispr Flow / OS dikteerimine) või `/onboard` juhendatud vestluse kaudu. Mõlemal juhul loeb `/onboard` seda faili, et seadistada sinu 1. päeva failistruktuur.
 
-**Hard cap: 7 questions.** Each answerable in under 60 seconds. Don't overthink — you can edit and re-run `/onboard` any time.
-
----
-
-## Q1 — Who are you, what do you sell, who do you sell it to?
-
-Identity, offer, ICP. One paragraph each is fine.
-
-```
-[Your answer here]
-```
+**Kõvakork: 7 küsimust.** Igale vastamiseks alla 60 sekundi. Ära ülemõtle — saad `/onboard` igal ajal uuesti käivitada.
 
 ---
 
-## Q2 — Paste 1-2 things you've written recently. Don't edit them.
+## K1 — Kes sa oled, mida müüd, kellele müüd?
 
-An email, a LinkedIn post, a DM, a doc — anything that sounds like you when you're not trying. **Paste verbatim.** Do not type these mid-conversation with Claude — chat-shaped samples are worse than no samples (voice contamination).
-
-```
-[Sample 1 — paste raw]
-```
+Identiteet, pakkumine, ideaalne klient. Üks lõik kummagi kohta on sobiv.
 
 ```
-[Sample 2 — paste raw]
+[Sinu vastus siia]
 ```
 
 ---
 
-## Q3 — What are your 2-3 biggest priorities for the next 90 days?
+## K2 — Kleebi 1-2 asja, mida oled hiljuti kirjutanud. Ära muuda neid.
 
-Quarterly priorities. Not yearly aspirations. Things that, if not done by July, would make you say "I wasted Q2."
-
-```
-1. [Priority 1]
-2. [Priority 2]
-3. [Priority 3]
-```
-
----
-
-## Q4 — Where does revenue actually land, and where is it tracked?
-
-Multiple answers OK. Stripe? Skool? GoHighLevel? QuickBooks? A spreadsheet?
+E-mail, LinkedIn postitus, sõnum, dokument — midagi, mis kõlab nagu sina, kui sa ei ürita. **Kleebi sõna-sõnalt.** Ära kirjuta neid siia vestluse käigus — vestluse käigus kirjutatud näidised on halvemad kui mitte midagi (hääle saastumine).
 
 ```
-[Your answer here]
+[Näidis 1 — kleebi toorelt]
+```
+
+```
+[Näidis 2 — kleebi toorelt]
 ```
 
 ---
 
-## Q5 — Where do you talk to customers, your team, and the outside world day-to-day?
+## K3 — Mis on sinu 2-3 suurimat prioriteeti järgmiseks 90 päevaks?
 
-Email (which one — Gmail / Outlook)? Slack? Teams? DMs (Skool / Discord / iMessage)? Phone?
-
-```
-[Your answer here]
-```
-
----
-
-## Q6 — Where do meeting recordings, notes, and important docs live?
-
-Granola? Otter? Fireflies? Google Drive? Notion? Dropbox? A folder on your desktop you keep meaning to organize?
+Kvartaliprioriteedid. Mitte aastate unistused. Asjad, mille tegemata jätmine juuliks paneks sind ütlema "raisksin K2."
 
 ```
-[Your answer here]
+1. [Prioriteet 1]
+2. [Prioriteet 2]
+3. [Prioriteet 3]
 ```
 
 ---
 
-## Q7 — What's the one task that eats your week, and where do you currently track work?
+## K4 — Kuhu tulu tegelikult laekub ja kus seda jälgitakse?
 
-The single biggest time-suck or recurring drudgery. Plus where tasks/projects live (ClickUp / Asana / Linear / Notion / a notebook).
+Mitu vastust sobib. Stripe? Montonio (pangalink)? Merit Aktiva (arveldus + raamatupidamine)? Tabel?
+Eesti valikud: **Merit Aktiva** (arveldus + raamatupidamine, `references/merit-aktiva-api.md`), **Montonio** (pangalink maksed, `references/montonio-api.md`).
 
 ```
-[Your answer here]
+[Sinu vastus siia]
 ```
 
 ---
 
-When this file is filled, run `/onboard` (or re-run it) and the wizard will scaffold your Day-1 file set: `context/`, `references/voice.md`, populated `connections.md`, and a filled `CLAUDE.md`.
+## K5 — Kus räägid klientide, meeskonna ja välismaailmaga igapäevaselt?
+
+E-mail (milline — Gmail / Outlook)? Slack? Teams? DM-id (Discord / iMessage)? Telefon?
+Eesti valikud: **Pipedrive** CRM + kliendikommunikatsiooniks (`references/pipedrive-api.md`).
+
+```
+[Sinu vastus siia]
+```
+
+---
+
+## K6 — Kus asuvad koosolekusalvestused, märkmed ja olulised dokumendid?
+
+Granola? Otter? Google Drive? Notion? Dropbox? Töölauakaustа, mida plaanid kord korrastada?
+
+```
+[Sinu vastus siia]
+```
+
+---
+
+## K7 — Mis ülesanne sööb sinu nädala ära ja kus jälgid tööd praegu?
+
+Suurim ajaraiskaja või korduv igav töö. Pluss kus ülesanded/projektid asuvad (ClickUp / Asana / Linear / Notion / märkmik).
+
+```
+[Sinu vastus siia]
+```
+
+---
+
+Kui see fail on täidetud, käivita `/onboard` (või käivita uuesti) ja viisard seadistab sinu 1. päeva failistruktuuri: `context/`, `references/voice.md`, täidetud `connections.md` ja täidetud `CLAUDE.md`.

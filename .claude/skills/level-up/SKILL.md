@@ -1,160 +1,154 @@
 ---
 name: level-up
-description: Use weekly to find and ship one new automation. Walks the 3Ms interview — Mindset (find the candidate) → Method (scope one) → Machine (build it). Trigger on "let's level up", "what should I automate next", "find me leverage this week", or as a Friday ritual. One run = one shipped artifact.
+description: Kasuta iganädalaselt ühe uue automatiseerimise leidmiseks ja teostamiseks. Käib läbi 3M-i intervjuu — Mõtteviis (leia kandidaat) → Meetod (defineeri üks) → Masin (ehita see). Käivita "tõuseme tasemele", "mida peaksin järgmiseks automatiseerima", "leia mulle sel nädalal hoob" peale, või reede rituaalina. Üks käivitamine = üks valminud artefakt.
 ---
 
-> *Adapted from The Three Ms of AI™. © 2026 Nate Herk. All rights reserved.*
-> *The Three Ms of AI™ is a trademark of Nate Herk.*
+## Mida see oskus teeb
 
-## What this skill does
+Käib kasutajaga iganädalaselt läbi 3M-id, et leida ja teostada üks uus automatiseering. **Üks intervjuu = üks artefakt.** See installib ka 3M-i raamistiku kasutaja pähe aja jooksul — pärast 4-6 käivitamist hakkab kasutaja märkama võimalusi nädala keskel ilma meeldetuletuseta, sest küsimused on saanud sisemiseks vaikimisviisiks.
 
-Walks the user through the 3Ms each week to surface and ship one new automation. **One interview = one artifact.** It also installs the 3Ms framework into the user's head over time — after 4-6 runs, the user starts spotting opportunities mid-week without prompting because the questions have become internal defaults.
+See on aju ümberjuhtimise mehhanism. Komplekt ei vaja käitumise ankurdamiseks cronjobe; see vajab `/level-up` käivitamist igal reedel.
 
-This is the brain-rewire mechanism. The kit doesn't need cron jobs to anchor behavior; it needs `/level-up` running every Friday.
+## Mida `/level-up` EI OLE
 
-## What `/level-up` is NOT
+- Mitte `/audit`. `/audit` on struktuurne ("kas Taibu AI OS on õigesti ehitatud?"). `/level-up` on funktsionaalne ("millist ärihooba mul puudu on?"). Käivita `/audit` esmalt kui struktuur on segane.
+- Mitte mitme kandidaadi planeerija. Üks käivitamine = üks valminud artefakt.
+- Mitte treener. Kasutaja teeb mõtlemise. Oskus viib intervjuu läbi.
 
-- Not `/audit`. `/audit` is structural ("is the AIOS built right?"). `/level-up` is functional ("what business leverage am I missing?"). Run `/audit` first if structure is messy.
-- Not a multi-candidate planner. One run = one shipped artifact.
-- Not a coach. The user does the thinking. The skill conducts the interview.
+## Millal `/level-up` käivitatakse
 
-## When `/level-up` runs
+- **Esimene käivitamine: 14. päev.** Pärast seda, kui kasutaja on ühendanud ≥1 MCP/skripti ja käivitanud `/audit` üks kord. Varem annab triviaalseid tulemusi.
+- **Kadents: iganädalaselt, reede pärastlõunal.** Vaata nädal üle, too esile üks automatiseering, teosta esmaspäeval.
+- **Nõudmisel igal ajal.** Nädala keskel kui mõni käsitsitöö sügeleb.
 
-- **First run: Day 14.** After the user has connected ≥1 MCP/script and run `/audit` once. Earlier yields trivial output.
-- **Cadence: weekly, Friday afternoon.** Review the week, surface one automation, ship Monday.
-- **On-demand any time.** Mid-week if a manual task itches.
+## Sisendid, mida oskus loeb
 
-## Inputs the skill reads
+- `context/priorities.md` — mida kasutaja ütles, et on oluline
+- `context/about-me.md` — top_pain, roll
+- `connections.md` — mis on kättesaadav, millise mehhanismi kaudu
+- `references/3ms-framework.md` — raamistik (kasutatakse põhimõtete tagasi tsiteerimiseks)
+- `decisions/log.md` — hiljutised otsused (mis on juba teostatud või kaalutud)
+- `.claude/skills/*/SKILL.md` frontmatter — mis võimed eksisteerivad
+- Hiljutine `audits/audit-{kuupäev}.md` kui olemas
 
-- `context/priorities.md` — what the user said matters
-- `context/about-me.md` — top_pain, role
-- `connections.md` — what's reachable, by what mechanism
-- `references/3ms-framework.md` — the framework (used to quote principles back)
-- `decisions/log.md` — recent decisions (what's already shipped or considered)
-- `.claude/skills/*/SKILL.md` frontmatter — what capabilities exist
-- Recent `audits/audit-{date}.md` if present
+## Täitmine — kolm faasi
 
-## Execution — three phases
+### Faas 1 — Mõtteviisi intervjuu (leia kandidaat)
 
-### Phase 1 — Mindset interview (find the candidate)
+Too esile 1-3 kandidaati, järjestatud hoova järgi. Küsi need järjekorras, vestluslikult:
 
-Surface 1-3 candidates ranked by leverage. Ask these in order, conversationally:
+1. *"Kirjelda oma nädalat. Mida tegid 3+ korda?"* (sagedus)
+2. *"Midagi, mis tundus käsitsi, igav või kopeeri-kleebi?"* (igavus)
+3. *"Midagi, kus mõtlesid 'nutikas praktikant saaks sellega hakkama'?"* (delegeerimine)
+4. *"Kui 500 uut klienti ilmuks homme, mis katki läheks esimesena?"* (kitsaskoht)
+5. *"Mis annaks sulle 500 klienti juurde homme?"* (kasvuhoob)
 
-1. *"Walk me through your week. What did you do 3+ times?"* (frequency)
-2. *"Anything that felt manual, boring, or copy-paste?"* (drudgery)
-3. *"Anything where you thought 'a smart intern could handle this'?"* (delegation)
-4. *"If 500 new clients showed up tomorrow, what would break first?"* (constraint)
-5. *"What would give you 500 more clients tomorrow?"* (growth lever)
+Tsiteeri asjakohaseid Mõtteviisi põhimõtteid kui need sobivad:
+- *"Tundub, et Vaikimisi Nihe rakendub — mil määral saaks AI-d siin kasutada?"*
+- *"See on Funktsiooni Lahti Võtmine — sa ei automatiseeri tervet tööd, ainult selle ühe tüki."*
+- *"AI on parem kui arvad ja paraneb kiiremini kui arvad. Kui see ei saanud seda eelmisel kvartalil teha, võib see nüüd valmis olla."*
 
-Quote relevant Mindset principles when they fit:
-- *"Sounds like the Default Shift applies — to what extent could AI be leveraged here?"*
-- *"This is the Function Breakdown — you're not automating the whole job, just this one piece."*
-- *"AI is better than you think and improving faster than you think. If it couldn't do this last quarter, it might be ready now."*
+**Faasi 1 väljund:** nummerdatud loend 1-3 kandidaatvõimalusest, üherealise "miks see on hoob" selgitusega kandidaadi kohta. Küsi: *"Vali üks defineerimiseks."*
 
-**Output of Phase 1:** numbered list of 1-3 candidate opportunities, one-line "why this is leverage" per candidate. Ask: *"Pick one to scope."*
+### Faas 2 — Meetodi intervjuu (defineeri üks)
 
-### Phase 2 — Method interview (scope one)
+Kasutaja valib ühe kandidaadi. Käi läbi 5-sammuline Meetodi torujuhe:
 
-User picks one candidate. Walk the 5-step Method pipeline:
+**Samm 1 — Leia kitsaskoht.** Millist kitsaskohta see lahendab, või millist kasvuhooba avab? Seo tagasi Faasi 1 vastustega.
 
-**Step 1 — Find the constraint.** Which bottleneck does this solve, or which growth lever does it open? Tie back to Phase 1 answers.
+**Samm 2 — EAD: Elimineeri / Automatiseeri / Delegeeri.**
+- **Kõigepealt Elimineeri:** *"Mis juhtub, kui lihtsalt lõpetame selle tegemise?"* Kui vastus on "mitte midagi ei katki" → oskus väljub rõõmsalt. *"Ära automatiseeri raiskamist."* See on võit, logi `decisions/log.md`-sse ja peatu.
+- **Teiseks Automatiseeri:** rakenda 60/30/10 raami. ~60% deterministlik, ~30% AI-abi, ~10% käsitsi.
+- **Kolmandaks Delegeeri:** kui liiga keeruline/muutlik/otsustemahukus → soovita inimest. Oskus väljub delegeerimissoovitusega, logi see.
 
-**Step 2 — EAD: Eliminate / Automate / Delegate.**
-- **Eliminate first:** *"What happens if we just stop doing this?"* If the answer is "nothing breaks" → skill exits cheerfully. *"Don't automate waste."* This is a win, log to `decisions/log.md` and stop.
-- **Automate second:** apply 60/30/10 framing. ~60% deterministic, ~30% AI-assisted, ~10% manual.
-- **Delegate third:** if too complex/variable/judgment-heavy → suggest a person. Skill exits with a delegation suggestion, log it.
+**Samm 3 — Kaardista protsess.** Viis elementi:
+- Käivitaja (mis paneb selle käima)
+- Andmeallikad (kust info tuleb)
+- Andmete teisendused (kuidas andmed muudavad kuju)
+- Otsusepunktid (kus see hargneb)
+- Sihtkoht (kuhu väljund läheb)
 
-**Step 3 — Map the process.** Five elements:
-- Trigger (what kicks it off)
-- Data sources (where info comes from)
-- Data transformations (how data changes shape)
-- Decision points (where it branches)
-- Destination (where output goes)
+Kui kasutaja ei suuda ühtki viiest seletada: *"Kui ei suuda seletada inimesele, ei suuda seletada AI-le. Joonista see kõigepealt paberile, siis tule tagasi."* Oskus peatub.
 
-If the user can't articulate any of the five: *"If you can't explain it to a person, you can't explain it to an AI. Sketch it on paper first, then come back."* Skill stops.
+**Samm 4 — Vali autonoomia tase.**
 
-**Step 4 — Pick the autonomy level.**
-
-| Level | Name | What happens |
+| Tase | Nimi | Mis juhtub |
 |---|---|---|
-| L0 | Manual | No AI |
-| L1 | Suggested | AI suggests, human decides every step |
-| L2 | Drafted | AI drafts, human reviews and edits |
-| L3 | Supervised | AI runs, human validates periodically |
-| L4 | Autonomous | AI handles end-to-end |
+| T0 | Käsitsi | Pole AI-d |
+| T1 | Soovitatud | AI soovitab, inimene otsustab igal sammul |
+| T2 | Mustandatud | AI koostab mustandid, inimene vaatab üle ja muudab |
+| T3 | Järelevalvega | AI töötab, inimene valideerib perioodiliselt |
+| T4 | Autonoomne | AI haldab algusest lõpuni |
 
-**Default = lowest level that solves the problem.** Push back on L4 unless the user has explicitly run lower levels first. *"Workflows beat agents. If a decision doesn't HAVE to be made by AI, don't let AI make it."*
+**Vaikimisi = madalaim tase, mis probleemi lahendab.** Lükka tagasi T4, kui kasutaja ei ole selgesõnaliselt madalamaid tasemeid esmalt käitanud. *"Töövood on paremad kui agendid. Kui otsust EI PEA tegema AI, ära lase AI-l seda teha."*
 
-**Step 5 — Tie to a KPI.** Which of the Three Buckets does this move?
-- More customers
-- More value per customer
-- Less cost
+**Samm 5 — Seo KPI-ga.** Millist Kolme Ämbrit see liigutab?
+- Rohkem kliente
+- Rohkem väärtust kliendi kohta
+- Vähem kulusid
 
-Plus a specific metric (response time, error rate, conversion rate, time-to-completion). **If the user can't name a bucket and a metric, skill stops.** *"If your automation doesn't move a number, why are you building it?"*
+Pluss konkreetne mõõdik (reageerimisaeg, veamäär, konversioonimäär, täitmisaeg). **Kui kasutaja ei suuda nimetada ämbrit ja mõõdikut, oskus peatub.** *"Kui sinu automatiseering ei liiguta numbrit, miks sa seda ehitad?"*
 
-**Output of Phase 2:** scoped automation spec written to `decisions/log.md` as a dated entry with all five answers + autonomy level + KPI. Durable record of what was decided and why.
+**Faasi 2 väljund:** defineeritud automatiseerimise spetsifikatsioon kirjutatud `decisions/log.md`-sse kuupäevastatud kirjena kõigi viie vastuse + autonoomia taseme + KPI-ga. Püsiv rekord sellest, mida otsustati ja miks.
 
-### Phase 3 — Machine handoff (build it)
+### Faas 3 — Masina üleandmine (ehita see)
 
-Ask: *"How do you want to ship this?"* Options ordered by Boring-is-Beautiful default:
+Küsi: *"Kuidas soovid selle teostada?"* Valikud järjestatud Igav-on-Ilus vaikimisi järgi:
 
-1. **Prompt-only** — saved prompt template the user runs by hand. Zero infrastructure. Highest manual involvement.
-2. **Deterministic skill** — SKILL.md that runs a script (no AI step). Best for transformations with clear rules.
-3. **AI-assisted skill** — SKILL.md with one AI call inside. Drafts, classifies, summarizes.
-4. **Sub-agent** — multi-step agent. Last resort. Only if the work genuinely needs reasoning + tool use.
+1. **Ainult prompt** — salvestatud promptimall, mida kasutaja käsitsi käivitab. Null infrastruktuuri. Suurim käsitsi kaasatus.
+2. **Deterministlik oskus** — SKILL.md, mis käitab skripti (pole AI sammu). Parim selgete reeglitega teisenduste jaoks.
+3. **AI-abistatud oskus** — SKILL.md ühe AI kutsega sees. Mustandid, klassifitseerib, võtab kokku.
+4. **Alaagent** — mitme sammuga agent. Viimane võimalus. Ainult kui töö vajab tõeliselt arutlust + tööriistade kasutust.
 
-**Default selected = highest non-AI option that solves the problem.** User has to explicitly choose more autonomy.
+**Vaikimisi valitud = kõrgeim mitte-AI valik, mis probleemi lahendab.** Kasutaja peab selgesõnaliselt valima rohkem autonoomsust.
 
-Once chosen, route to the appropriate scaffolder:
-- `skill-creator` if available globally (Anthropic-shipped)
-- `skill-builder` if user has it locally
-- Otherwise write a SKILL.md / agent file inline with frontmatter, location, and contents
+Kui valitud, suuna sobivasse seadistajasse:
+- `skill-creator` kui globaalselt saadaval (Anthropic installeeritud)
+- `skill-builder` kui kasutajal on see lokaalselt
+- Muidu kirjuta SKILL.md / agendifail inline frontmatteri, asukoha ja sisuga
 
-**Every scaffolded artifact ships with these two headers at top:**
+**Iga seadistatud artefakt sisaldab ülaosas:**
 
 ```markdown
 ---
-bike-method-phase: 1  # Phase 1 — Training wheels. Run manually first.
-three-ms-attribution: |
-  Adapted from The Three Ms of AI™ © 2026 Nate Herk.
+jalgratta-meetod-faas: 1  # Faas 1 — Treeningrattad. Käivita kõigepealt käsitsi.
 ---
 ```
 
-This locks the user into Phase 1 of the Bike Method on first build. They can't silently skip manual validation. Phase advances only by explicit edit.
+See lukustab kasutaja Jalgratta Meetodi Faasi 1-sse esimesel ehitusel. Nad ei saa vaikimisi käsitsi valideerimist vahele jätta. Faas liigub edasi ainult selgesõnalise muutmisega.
 
-Surface the Machine principles when scaffolding:
-- **Lego Principle** — smallest steps, zero-AI first if possible
-- **Validation Chain** — test each step before chaining
-- **Iteration Mindset** — ship the POC, expand from real usage
+Too esile Masina põhimõtted seadistamisel:
+- **Lego Printsiip** — väikseimad sammud, kõigepealt null-AI kui võimalik
+- **Valideerimisahel** — testi iga sammu enne aheldamist
+- **Iteratsiooni Mõtteviis** — teosta POC, laienda päris kasutusest
 
-## Output contract
+## Väljundi leping
 
-Every `/level-up` run produces:
+Iga `/level-up` käivitamine toodab:
 
-1. **One `decisions/log.md` entry** — dated, with the Method spec
-2. **One scaffolded artifact** — prompt, skill, or agent file
-3. **A one-screen close** — what was scoped, what was built, and the Bike Method Phase 1 reminder
+1. **Ühe `decisions/log.md` kirje** — kuupäevastatud, Meetodi spetsifikatsiooniga
+2. **Ühe seadistatud artefakti** — prompt, oskus või agendifail
+3. **Üheekraanilise sulgemise** — mis defineeriti, mis ehitati, ja Jalgratta Meetodi Faas 1 meeldetuletus
 
-## Critical implementation rules
+## Kriitilised teostusreeglid
 
-1. **One interview = one artifact.** No multi-candidate parallel scoping.
-2. **Mindset phase always runs first.** Even if user comes in with a pre-formed idea.
-3. **EAD enforces "eliminate first."** If the answer is Eliminate, exit cheerfully — that's a win, not a failure.
-4. **Default to the lowest autonomy level that works.** Push back on L4.
-5. **Boring-is-Beautiful default in Machine handoff.** Default = highest non-AI option.
-6. **Tie-to-KPI is mandatory.** If user can't name bucket + metric, skill stops.
-7. **Bike Method ships into every artifact.** `bike-method-phase: 1` in frontmatter.
-8. **Read-only on user files except `decisions/log.md` and the new artifact.** Don't modify other existing files.
-9. **Trademark + attribution on output.** Every report and every scaffolded artifact references the framework.
+1. **Üks intervjuu = üks artefakt.** Pole mitme kandidaadi paralleelset defineerimist.
+2. **Mõtteviisi faas käivitatakse alati esimesena.** Isegi kui kasutaja tuleb eelnevalt kujundatud ideega.
+3. **EAD jõustab "kõigepealt elimineeri."** Kui vastus on Elimineeri, välju rõõmsalt — see on võit, mitte ebaõnnestumine.
+4. **Vaikimisi madalaim autonoomia tase, mis töötab.** Lükka tagasi T4.
+5. **Igav-on-Ilus vaikimisi Masina üleandmisel.** Vaikimisi = kõrgeim mitte-AI valik.
+6. **KPI sidumine on kohustuslik.** Kui kasutaja ei suuda nimetada ämbrit + mõõdikut, oskus peatub.
+7. **Jalgratta Meetod saadetakse iga artefaktiga.** `jalgratta-meetod-faas: 1` frontmatteris.
+8. **Ainult lugemine kasutaja failides välja arvatud `decisions/log.md` ja uus artefakt.** Ära muuda teisi olemasolevaid faile.
 
-## Verification (for the implementer)
+## Verificeerimine (teostajale)
 
-- **Dry run on Nate's Herk-2** with no prompt. Expected: skill surfaces 2-3 candidates pulled from his recent activity, priorities, and top_pain. Generic output ("you should build a brief") = fail.
-- **Eliminate-first test.** Feed an obviously eliminate-able candidate. Expected: skill suggests Eliminate, exits, logs the win.
-- **L4 push-back test.** User asks for autonomous email-replier on first build. Expected: skill insists on L1/L2 first, won't ship L4 without explicit override.
-- **Boring-is-Beautiful test.** Candidate solvable with deterministic Python. Expected: skill recommends `(2) deterministic skill` as default.
-- **Bike Method anti-skip.** User scaffolds, asks to advance to Phase 4 immediately. Expected: skill makes them read what each phase means and confirm they've validated lower phases.
+- **Ilma promptita käivitamine.** Oodatav: oskus toob esile 2-3 kandidaati hiljutisest aktiivsusest, prioriteetidest ja top_pain-ist. Üldine väljund ("peaksid ehitama ülevaate") = ebaõnnestumine.
+- **Elimineeri-esimesena test.** Söö ilmselgelt elimineeritav kandidaat. Oodatav: oskus soovitab Elimineerida, väljub, logib võidu.
+- **T4 tagasilükkamise test.** Kasutaja küsib autonoomset e-maili vastajat esimesel ehitusel. Oodatav: oskus nõuab esmalt T1/T2, ei teosta T4 ilma selgesõnalise alistamiseta.
+- **Igav-on-Ilus test.** Kandidaat lahendatav deterministliku Pythoniga. Oodatav: oskus soovitab vaikimisi `(2) deterministlik oskus`.
+- **Jalgratta Meetodi vahele jätmise vältimine.** Kasutaja seadistab, küsib kohe Faasi 4-sse liikumist. Oodatav: oskus paneb neid lugema, mida iga faas tähendab, ja kinnitama madalamaid faase.
 
 ---
 
-> *The Three Ms of AI™ is a trademark of Nate Herk. © 2026 Nate Herk. All rights reserved.*
+*Taibu AI OS Eesti — loonud Martti Mäger / MGR Tech Solutions OÜ. © 2026 MGR Tech Solutions OÜ.*

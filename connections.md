@@ -1,17 +1,22 @@
-# Connections
+# Ühendused
 
-Registry of every system your AIOS can reach. Filled by `/onboard` from Q4-Q7 answers; expanded over time as you wire new tools. `/audit` checks this file for domain coverage and freshness.
+Register kõikidest süsteemidest, millele sinu Taibu AI OS ligi pääseb. Täidetud `/onboard` poolt K4-K7 vastuste põhjal; laiendatakse aja jooksul uute tööriistade ühendamisel. `/audit` kontrollib seda faili domeenide katvuse ja värskuse osas.
 
-| # | Domain | Tool | Mechanism | Auth | Last checked |
+| # | Domeen | Tööriist | Mehhanism | Auth | Viimati kontrollitud |
 |---|---|---|---|---|---|
-| 1 | Revenue / Financials | _filled by /onboard_ | not yet connected | — | — |
-| 2 | Customer interactions | _filled by /onboard_ | not yet connected | — | — |
-| 3 | Calendar | _filled by /onboard_ | not yet connected | — | — |
-| 4 | Communication | _filled by /onboard_ | not yet connected | — | — |
-| 5 | Project / task tracking | _filled by /onboard_ | not yet connected | — | — |
-| 6 | Meeting intelligence | _filled by /onboard_ | not yet connected | — | — |
-| 7 | Knowledge / files | _filled by /onboard_ | not yet connected | — | — |
+| 1 | Tulu / Raamatupidamine | _täidetud /onboard poolt_ | pole veel ühendatud | — | — |
+| 2 | Kliendisuhted | _täidetud /onboard poolt_ | pole veel ühendatud | — | — |
+| 3 | Kalender | _täidetud /onboard poolt_ | pole veel ühendatud | — | — |
+| 4 | Kommunikatsioon | _täidetud /onboard poolt_ | pole veel ühendatud | — | — |
+| 5 | Projektid / ülesanded | _täidetud /onboard poolt_ | pole veel ühendatud | — | — |
+| 6 | Koosolekud / märkmed | _täidetud /onboard poolt_ | pole veel ühendatud | — | — |
+| 7 | Teadmus / failid | _täidetud /onboard poolt_ | pole veel ühendatud | — | — |
 
-**Mechanism options:** `mcp` (MCP server), `script` (Python/Bash hitting an API, in `scripts/`), `export` (CSV/JSON dump pipeline), `key+ref` (`.env` key + `references/{tool}-api.md` guide), `not yet connected`.
+**Mehhanismi valikud:** `mcp` (MCP server), `skript` (Python/Bash API kaudu, `scripts/` kaustas), `eksport` (CSV/JSON dump), `võti+viide` (`.env` võti + `references/{tööriist}-api.md` juhend), `pole veel ühendatud`.
 
-When you wire a new tool, also save `references/{tool}-api.md` capturing endpoints, auth flow, and common queries — researched-once-saved-forever.
+**Eesti turu soovitused:**
+- Tulu/Raamatupidamine: [Merit Aktiva](references/merit-aktiva-api.md) — Eesti populaarseim raamatupidamistarkvara
+- Maksed: [Montonio](references/montonio-api.md) — pangalink, kaardimaksed, järelmaks
+- CRM: [Pipedrive](references/pipedrive-api.md) — Eestis asutatud CRM, globaalselt kasutusel
+
+Uue tööriista ühendamisel salvesta ka `references/{tööriist}-api.md` — dokumenteeri API lõpp-punktid, auth ja tüüpilised päringud üks kord, kasuta igavesti.

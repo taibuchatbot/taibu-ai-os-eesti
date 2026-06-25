@@ -1,21 +1,21 @@
-# Decisions Log
+# Otsuste logi
 
-Append-only record of meaningful decisions and why they were made. `/level-up` Phase 2 (Method interview) writes scoped automation specs here. You can also append manually whenever you decide something worth remembering.
+Tähenduslike otsuste ja nende põhjuste järjestikune register. `/level-up` 2. faas (Meetod intervjuu) kirjutab automatiseerimise spetsifikatsioonid siia. Saad ka käsitsi lisada, kui teed midagi, mida tasub meenutada.
 
-**Format per entry:**
+**Kirje formaat:**
 
 ```
-## YYYY-MM-DD — Short title
+## AAAA-KK-PP — Lühike pealkiri
 
-**Decision:** what was decided.
+**Otsus:** mida otsustati.
 
-**Why:** the reasoning, constraints, and what would change your mind.
+**Miks:** põhjendus, piirangud ja mis paneks sind meelt muutma.
 
-**Alternatives considered:** what else was on the table.
+**Kaalutud alternatiivid:** mis muud laual oli.
 
-**Owner:** who's accountable.
+**Vastutaja:** kes vastutab.
 ```
 
-Keep it terse. Future-you will thank present-you for capturing the *why*, not just the *what*.
+Hoia lühidalt. Tuleviku-sina tänab praeguse-sind **miks** jäädvustamise eest, mitte ainult **mida**.
 
 ---

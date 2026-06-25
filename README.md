@@ -1,118 +1,109 @@
-# AIS-OS — AI Operating System starter kit for Claude Code
+# Taibu AI OS Eesti
 
-A free, MIT-licensed starter kit that turns Claude Code into your personal **AI Operating System (AIOS)**. Audience: anyone building automations — solopreneurs, small business operators, managers, creators, AI consultants. Pairs with a companion masterclass video.
+**Loonud [Martti Mäger](https://github.com/taibuchatbot) / MGR Tech Solutions OÜ**
 
-The kit personalizes itself to you via an `/onboard` interview, then gives you two recurring thinking skills (`/audit`, `/level-up`) to keep building leverage week over week.
+Tasuta MIT-litsentsiga tööriistakomplekt, mis muudab Claude Code'i sinu isiklikuks **AI operatsioonisüsteemiks**. Sobib kõigile, kes soovivad automatiseerida igapäevast tööd — ettevõtjatele, juhtidele, konsultantidele, loovjatele. Kohandatud Eesti turu tööriistadele (Pipedrive, Merit Aktiva, Montonio).
 
-> **AIS-OS** stands for **AI Automation Society OS** — the way Nate designed this AIOS to be set up for members of his community, [AI Automation Society](https://www.skool.com/ai-automation-society). The kit is universal (it works for anyone), but the structure mirrors how AIS members run their own businesses on top of it.
-
----
-
-## The litmus test
-
-> **"While you're not at your desk, your AIS-OS observes one real-world event and produces an output that's faster and more accurate than what you'd produce yourself."**
-
-Every design decision in this kit rolls up to that test. If a layer, skill, or template doesn't contribute to it, it doesn't ship.
+Süsteem personaliseerib end sinu jaoks `/onboard` intervjuu kaudu, seejärel annab kaks korduvat mõtlemisoskust (`/audit`, `/level-up`), et iga nädalaga rohkem automatiseeringuid lisada.
 
 ---
 
-## How you'll know it's working
+## Edukuse test
 
-Three felt **success indicators** tell you the AIOS is actually changing how you work. Not KPIs — there's no objective metric. These are lived experiences that show up in your week.
+> **"Kui sa ei ole laua taga, märkab sinu Taibu AI OS üht reaalset sündmust ja toodab väljundi, mis on kiirem ja täpsem kui see, mille sa ise looksid."**
 
-**1. Team-reaches-out:**
-
-> *"A teammate messages you with a question. You realize your AIOS would answer it better, faster, and with exact sources — even if you were awake and free. So you ask your AIOS too. That's the moment you stop being a bottleneck for your own knowledge."*
-
-**2. Context-switching reduction:**
-
-> *"You stop opening new tabs. You stop launching the desktop app. When something new lands, your first move is to ask the AIOS, not to open six things. The default surface for thought work shifts. Silent. Compounding."*
-
-**3. Knowledge-leaves-your-head:**
-
-> *"You stop trying to remember business facts. You don't rehearse what you decided last quarter or what your customer said in that meeting. You trust the retrieval. The AIOS holds the truth, you hold the questions."*
-
-**Personal foundation → company AI-readiness.** Once these indicators show up for one person, the same data architecture powers everything else. Custom dashboards on the data you already collect. Automations on top of the connections you already wired. Team rollout where everyone has theirs. *A company where every operator runs a personal AIOS is a company that's actually AI-ready.*
-
-The kit teaches personal AIOS first. Everything scales from there.
+Iga disainiotsus selles tööriistakomplektis lähtub sellest testist. Kui mingi kiht, oskus või mall sellele ei panusta, ei kuulu see siia.
 
 ---
 
-## Two frameworks
+## Kuidas tead, et see töötab
 
-The kit teaches two complementary frameworks. **Three Ms first, Four Cs second.** Without the brain rewire, the architecture is just a folder structure.
+Kolm **edumärki**, mis ütlevad, et Taibu AI OS muudab päriselt sinu töötamist.
 
-### The Three Ms — operator brain (how you think)
+**1. Meeskond pöördub sinu AI poole:**
 
-| M | One-liner |
+> *"Kolleeg küsib sinult küsimuse. Sa mõistad, et sinu Taibu AI OS vastaks sellele paremini, kiiremini ja täpsemate allikatega — isegi kui sa oleksid ärkvel ja vaba. Nii küsid ka ise AI-lt. See on hetk, mil sa lakkad olemast oma teadmiste kitsaskoht."*
+
+**2. Kontekstivahetus väheneb:**
+
+> *"Sa lõpetad uute vahelehtede avamise. Kui midagi uut tuleb, on sinu esimene samm küsida Taibu AI OS-lt — mitte avada kuut rakendust. Vaikne. Liitintressiga."*
+
+**3. Teadmine lahkub sinu peast:**
+
+> *"Sa lõpetad äriandmete meeles pidamise. Sa ei korrutele endamisi, mida eelmisel kvartalil otsustati või mida klient sellel koosolekul ütles. Sa usaldad otsimist. Taibu AI OS hoiab tõde, sina hoiad küsimusi."*
+
+**Isiklik alus → ettevõtte AI-valmidus.** Kui need märgid ilmuvad ühel inimesel, toetab sama andmearhistektuur kõike muud: dashboardid, automatiseeringud, meeskonna kasutuselevõtt.
+
+---
+
+## Kaks raamistikku
+
+Kõigepealt Kolm M-i, siis Neli C-d. Ilma mõtteviisi muutuseta on arhitektuur lihtsalt kaustade struktuur.
+
+### Kolm M-i — operaatori aju (kuidas mõelda)
+
+| M | Põhimõte |
 |---|---|
-| **Mindset** | Default Shift, Function Breakdown, Curiosity Rule. *To what extent can AI be leveraged here?* |
-| **Method** | Find Constraint → EAD (Eliminate, Automate, Delegate) → Map Process → Pick Autonomy Level → Tie to KPI. |
-| **Machine** | Lego Principle, Validation Chain, Bike Method, Intern Rule, Kill Switch. *Boring is beautiful. Workflows beat agents.* |
+| **Mõtteviis** | Vaikimisi nihe, Funktsiooni lahti võtmine, Uudishimu reegel. *Mil määral saab siin AI-d kasutada?* |
+| **Meetod** | Leia kitsaskoht → EAD (Elimineeri, Automatiseeri, Delegeeri) → Kaardista protsess → Vali autonoomia tase → Seo KPI-ga. |
+| **Masin** | Lego printsiip, Valideerimisahel, Jalgratta meetod, Praktikant reegel, Väljalüliti. *Igav on ilus. Töövood on paremad kui agendid.* |
 
-Full breakdown in `references/3ms-framework.md`. The `/level-up` skill walks you through all three weekly.
+Täielik selgitus: `references/3ms-framework.md`. Oskus `/level-up` käib kõik kolm läbi igal nädalal.
 
-> *The Three Ms of AI™ is a trademark of Nate Herk. © 2026 Nate Herk.*
+### Neli C-d — arhitektuur (mida ehitada)
 
-### The Four Cs — architecture (what you build)
-
-| # | Layer | One-liner | "This layer is in place" test |
+| # | Kiht | Põhimõte | Test |
 |---|---|---|---|
-| 1 | **Context** | Knows your business | Fresh Claude session answers "what does this business do and who works here?" without browsing |
-| 2 | **Connections** | Reaches your stuff | "What's on my calendar tomorrow and what tasks are due?" → live data, no paste |
-| 3 | **Capabilities** | Knows how to do the work | A short phrase triggers a multi-step workflow that produces an artifact |
-| 4 | **Cadence** | Runs without being asked | Laptop closed. A brief lands in the inbox. A teammate messages it and gets a real answer |
+| 1 | **Kontekst** | Teab sinu äri | Uus Claude'i seanss vastab "mis see ettevõte teeb?" ilma otsimata |
+| 2 | **Ühendused** | Pääseb sinu andmetele ligi | "Mis on homme kalendris?" → reaalajas andmed, mitte kopeerimine |
+| 3 | **Võimed** | Oskab tööd teha | Lühike fraas käivitab mitmeastmelise töövoo |
+| 4 | **Kadents** | Töötab ilma küsimata | Sülearvuti kinni. Brief jõuab postkasti. |
 
-**Brand line:** Context. Connections. Capabilities. Cadence.
-
-> *The Four Cs of an AIOS™ is a trademark of Nate Herk. © 2026 Nate Herk.*
-
-Dependency graph: Context is non-skippable. Connections + Capabilities can build in parallel. Cadence is last — don't automate workflows that don't work manually.
+**Brändi lause:** Kontekst. Ühendused. Võimed. Kadents.
 
 ---
 
-## What ships — 3 skills
+## Mis komplektis on — 3 oskust
 
-The kit is intentionally lean. Skills here are ideation prompts and thinking tools, not heavy automations. You hack on top of the structure.
-
-| Skill | Type | When to run |
+| Oskus | Tüüp | Millal kasutada |
 |---|---|---|
-| `/onboard` | Setup wizard (one-time) | Day 1, immediately after clone. 7-question interview. Generates Day-1 file set + fills `CLAUDE.md`. |
-| `/audit` | Recurring thinking skill | Day 7, then weekly. Four-Cs gap report. Read-only. Watch the score climb. |
-| `/level-up` | Recurring thinking skill | Day 14, then weekly. Three Ms interview (Mindset → Method → Machine). One run = one shipped artifact. |
-
-`/audit` asks *"is the AIOS built right?"* (form). `/level-up` asks *"what business leverage am I missing?"* (function). They work in series — fix structure first, then capability planning becomes meaningful.
+| `/onboard` | Seadistusviisard (ühekordne) | 1. päev, kohe pärast klooni. 7-küsimust intervjuu. |
+| `/audit` | Korduv mõtlemisoskus | 7. päev, siis iganädalaselt. Neli C-d aruanne. |
+| `/level-up` | Korduv mõtlemisoskus | 14. päev, siis iganädalaselt. Üks automatiseering nädalas. |
 
 ---
 
-## Quick start
+## Kiirstart
 
-1. **Clone the repo** to a working folder on your machine.
-2. **Open it in Claude Code** and run `/onboard`. Answer the 7 questions honestly. Voice samples must be pasted, not described. Takes ~15 minutes. Day-1 file set drops at the end.
-3. **Use it for a week.** Bring real questions. Make real decisions. Log them via `/decision` (or just append to `decisions/log.md`).
-4. **Day 7:** run `/audit`. Read the Four-Cs gap report. Pick one gap to close.
-5. **Day 14:** run `/level-up`. The Three Ms interview surfaces one automation worth building. Build it.
-6. **Week 3+:** weekly `/level-up` ritual. One shipped artifact per week.
+1. **Klooni repo** oma arvutisse.
+2. **Ava Claude Code'is** ja käivita `/onboard`. Vasta 7 küsimusele ausalt. Häälenäidised pead kleepima, mitte kirjutama. Võtab ~15 minutit.
+3. **Kasuta nädal aega.** Too päris küsimusi. Tee päris otsuseid. Logi need.
+4. **7. päev:** käivita `/audit`. Vaata Nelja C aruannet. Vali üks puudus, mida parandada.
+5. **14. päev:** käivita `/level-up`. Kolm M-i intervjuu toob esile ühe automatiseerimise. Ehita see.
+6. **3. nädal+:** iganädalane `/level-up` rituaal. Üks valminud automatiseering nädalas.
 
 ---
 
-## Repo layout
+## Repo struktuur
 
 ```
-AIS-OS/
+taibu-ai-os-eesti/
 ├── README.md
-├── CLAUDE.md                        ← Your operating manual (filled by /onboard)
-├── EXPANSIONS.md                    ← What to add as you grow
+├── CLAUDE.md                        ← Sinu käitamisjuhend (täidetud /onboard poolt)
+├── EXPANSIONS.md                    ← Mida lisada kasvades
 ├── LICENSE
 ├── .gitignore
-├── aios-intake.md                   ← Source-of-truth for /onboard. Edit + re-run any time.
-├── connections.md                   ← Registry of every system your AIOS can reach
-├── context/                         ← About you, your business (filled by /onboard)
+├── aios-intake.md                   ← /onboard allikas. Muuda ja käivita uuesti igal ajal.
+├── connections.md                   ← Register kõikidest süsteemidest
+├── context/                         ← Sinust, sinu ärist (täidetud /onboard poolt)
 ├── references/
-│   └── 3ms-framework.md             ← The operator brain
+│   ├── 3ms-framework.md             ← Operaatori aju (EN)
+│   ├── pipedrive-api.md             ← Pipedrive API juhend (EN)
+│   ├── merit-aktiva-api.md          ← Merit Aktiva API juhend (EN)
+│   └── montonio-api.md              ← Montonio API juhend (EN)
 ├── decisions/
-│   └── log.md                       ← Append-only record of what was decided and why
-├── archives/                        ← Old stuff. Don't delete. Move here.
+│   └── log.md                       ← Otsuste logi
+├── archives/                        ← Vana materjal. Ära kustuta. Tõsta siia.
 └── .claude/
     └── skills/
         ├── onboard/SKILL.md
@@ -120,14 +111,10 @@ AIS-OS/
         └── level-up/SKILL.md
 ```
 
-See `EXPANSIONS.md` for what to add as you grow (`projects/`, `templates/`, `scripts/`, `.claude/agents/`, sub-OS folders, etc.).
-
 ---
 
-## License + attribution
+## Litsents
 
-MIT License. © 2026 Nate Herk.
+MIT litsents. © 2026 MGR Tech Solutions OÜ. Loonud Martti Mäger.
 
-The Three Ms of AI™ and The Four Cs of an AIOS™ are trademarks of Nate Herk. Both frameworks ship in this repo with attribution. Use freely; don't repackage as your own.
-
-The companion masterclass video walks you through the kit step by step. Link will land here once it ships.
+Taibu AI OS Eesti on MGR Tech Solutions OÜ toode. Operaatoriks (kasutajaks) võib olla iga eraisik või ettevõte — looja ja õiguste hoidja on MGR Tech Solutions OÜ / Martti Mäger.
