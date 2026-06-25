@@ -8,6 +8,10 @@ credentials.json
 # Local-only Claude Code config (machine-specific hooks, etc.)
 .claude/settings.local.json
 
+# Skills CLI working cache (npx skills). Skills ise elavad .claude/skills/-s.
+.agents/
+skills-lock.json
+
 # OS / tooling noise
 .DS_Store
 *.log

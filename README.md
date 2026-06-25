@@ -111,15 +111,24 @@ taibu-ai-os-eesti/
 ├── decisions/
 │   └── log.md                       ← Otsuste logi
 ├── archives/                        ← Vana materjal. Ära kustuta. Tõsta siia.
-├── .agents/skills/                  ← find-skills (universaalne, npx skills hallatav)
 └── .claude/
-    ├── hooks/                       ← valikulised automaatika-skriptid
-    └── skills/
+    ├── hooks/
+    │   └── auto-commit.ps1          ← Valikuline automaatse salvestamise skript
+    └── skills/                      ← KÕIK oskused elavad siin (üks koht)
         ├── onboard/SKILL.md
         ├── audit/SKILL.md
         ├── level-up/SKILL.md
         └── find-skills/SKILL.md
 ```
+
+### Oskused elavad ühes kohas: `.claude/skills/`
+
+Iga oskus on kaust ühe `SKILL.md` failiga. **Uue oskuse lisamiseks** on kaks teed:
+
+1. **Küsi Claude'ilt** — "leia mulle oskus X jaoks" → `/find-skills` juhendab ja paigaldab.
+2. **Käsitsi** — kopeeri oskuse kaust `.claude/skills/<nimi>/`-sse.
+
+> ℹ️ `npx skills` tööriist kasutab sisemiselt vahekausta `.agents/` (mitme AI-tööriista jaoks) ja `skills-lock.json` faili. Need on `.gitignore`-s — sa ei pea neist hoolima. **Sinu jaoks loevad ainult `.claude/skills/` kaustad.** Nii väldime mitut segadusttekitavat oskuste asukohta.
 
 ---
 
@@ -127,21 +136,7 @@ taibu-ai-os-eesti/
 
 Kui tahad, et muudatused committuksid ja pushiksid GitHubi automaatselt — et sa ei unustaks pärast redigeerimist — saad lisada Claude Code **"Stop" hook'i**, mis käivitab `git` salvestamise iga kord, kui Claude vastuse lõpetab.
 
-See on **masina-spetsiifiline eelistus**, seega pane see `.claude/settings.local.json` faili (mitte jagatud `settings.json`-i). Nii ei pärandu automaatika neile, kes malli kloonivad. Turvakaalutlustel ei seadista AI seda sinu eest — loo kaks faili ise (~1 min):
-
-**1. `.claude/hooks/auto-commit.ps1`** — turvaline, valveklauslitega skript:
-
-```powershell
-$ErrorActionPreference = 'SilentlyContinue'
-if ((git rev-parse --is-inside-work-tree 2>$null) -ne 'true') { exit 0 }
-if (-not (git status --porcelain 2>$null)) { exit 0 }
-git add -A 2>$null
-git commit -m "auto: salvestatud $(Get-Date -Format 'yyyy-MM-dd HH:mm')" --no-verify 2>$null | Out-Null
-if (git remote 2>$null | Select-String -Pattern '^origin$' -Quiet) { git push 2>$null | Out-Null }
-exit 0
-```
-
-**2. `.claude/settings.local.json`** — seob hook'i (see fail on `.gitignore`-s):
+Skript ise **on juba komplektis**: `.claude/hooks/auto-commit.ps1` (turvaline, valveklauslitega — commitib ainult kui on muudatusi, ei puutu võtmeid). Aktiveerimiseks pead lisama **ainult ühe faili** — `.claude/settings.local.json`:
 
 ```json
 {
@@ -149,14 +144,17 @@ exit 0
     "Stop": [
       { "hooks": [ {
         "type": "command",
-        "shell": "powershell",
-        "command": "powershell -NoProfile -File .claude/hooks/auto-commit.ps1",
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .claude/hooks/auto-commit.ps1",
         "statusMessage": "Salvestan muudatused..."
       } ] }
     ]
   }
 }
 ```
+
+**Miks pead sa selle ise lisama?** Claude'i turvasüsteem ei luba AI-l ennast seadistada nii, et see hakkaks automaatselt `git push`-ima — see on tahtlik kaitse. Seega lisad selle viimase rea ise (üks kleepimine).
+
+**Miks `settings.local.json`, mitte `settings.json`?** `.local` fail on `.gitignore`-s ja jääb ainult sinu masinale. Nii ei pärandu automaatika neile, kes malli kloonivad — igaüks otsustab ise.
 
 > ⚠️ See käivitab `git push` automaatselt iga sessiooni lõpus. `.env` ja `*-service-account.json` on `.gitignore`-s, nii et võtmeid ei pushita. Aktiveeri ainult siis, kui sa seda päriselt tahad.
 
