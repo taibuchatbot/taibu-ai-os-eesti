@@ -63,24 +63,30 @@ Täielik selgitus: `references/3ms-framework.md`. Oskus `/level-up` käib kõik 
 
 ---
 
-## Mis komplektis on — 3 oskust
+## Mis komplektis on — oskused
 
 | Oskus | Tüüp | Millal kasutada |
 |---|---|---|
 | `/onboard` | Seadistusviisard (ühekordne) | 1. päev, kohe pärast klooni. 7-küsimust intervjuu. |
 | `/audit` | Korduv mõtlemisoskus | 7. päev, siis iganädalaselt. Neli C-d aruanne. |
 | `/level-up` | Korduv mõtlemisoskus | 14. päev, siis iganädalaselt. Üks automatiseering nädalas. |
+| `/find-skills` | Avastamine | Millal iganes vajad uut võimet — leiab ja paigaldab oskusi ökosüsteemist (`npx skills`). |
+
+Komplekt jääb tahtlikult minimaalseks. Selle asemel et kõik ette laadida, tõmbad `/find-skills` kaudu täpselt need oskused, mida sinu äri vajab (nt Meta reklaam, GTM analüütika). Vt `EXPANSIONS.md`.
 
 ---
 
 ## Kiirstart
 
 1. **Klooni repo** oma arvutisse.
-2. **Ava Claude Code'is** ja käivita `/onboard`. Vasta 7 küsimusele ausalt. Häälenäidised pead kleepima, mitte kirjutama. Võtab ~15 minutit.
-3. **Kasuta nädal aega.** Too päris küsimusi. Tee päris otsuseid. Logi need.
-4. **7. päev:** käivita `/audit`. Vaata Nelja C aruannet. Vali üks puudus, mida parandada.
-5. **14. päev:** käivita `/level-up`. Kolm M-i intervjuu toob esile ühe automatiseerimise. Ehita see.
-6. **3. nädal+:** iganädalane `/level-up` rituaal. Üks valminud automatiseering nädalas.
+2. **Seadista mandaadid:** kopeeri `.env.example` → `.env` ja täida ainult need võtmed, mida kasutad (Merit, Montonio, Pipedrive jne). `.env` on `.gitignore`-s — võtmeid ei laeta kunagi GitHubi.
+3. **Ava Claude Code'is** ja käivita `/onboard`. Vasta 7 küsimusele ausalt. Häälenäidised pead kleepima, mitte kirjutama. Võtab ~15 minutit.
+4. **Kasuta nädal aega.** Too päris küsimusi. Tee päris otsuseid. Logi need.
+5. **7. päev:** käivita `/audit`. Vaata Nelja C aruannet. Vali üks puudus, mida parandada.
+6. **14. päev:** käivita `/level-up`. Kolm M-i intervjuu toob esile ühe automatiseerimise. Ehita see.
+7. **3. nädal+:** iganädalane `/level-up` rituaal. Üks valminud automatiseering nädalas.
+
+Vajad uut võimet (nt Meta reklaam, Google Tag Manager)? Käivita `/find-skills` või `npx skills find <märksõna>`.
 
 ---
 
@@ -90,9 +96,10 @@ Täielik selgitus: `references/3ms-framework.md`. Oskus `/level-up` käib kõik 
 taibu-ai-os-eesti/
 ├── README.md
 ├── CLAUDE.md                        ← Sinu käitamisjuhend (täidetud /onboard poolt)
-├── EXPANSIONS.md                    ← Mida lisada kasvades
+├── EXPANSIONS.md                    ← Mida lisada kasvades + Eesti turu rajad
 ├── LICENSE
 ├── .gitignore
+├── .env.example                     ← Mandaatide mall — kopeeri .env-ks ja täida
 ├── aios-intake.md                   ← /onboard allikas. Muuda ja käivita uuesti igal ajal.
 ├── connections.md                   ← Register kõikidest süsteemidest
 ├── context/                         ← Sinust, sinu ärist (täidetud /onboard poolt)
@@ -104,12 +111,54 @@ taibu-ai-os-eesti/
 ├── decisions/
 │   └── log.md                       ← Otsuste logi
 ├── archives/                        ← Vana materjal. Ära kustuta. Tõsta siia.
+├── .agents/skills/                  ← find-skills (universaalne, npx skills hallatav)
 └── .claude/
+    ├── hooks/                       ← valikulised automaatika-skriptid
     └── skills/
         ├── onboard/SKILL.md
         ├── audit/SKILL.md
-        └── level-up/SKILL.md
+        ├── level-up/SKILL.md
+        └── find-skills/SKILL.md
 ```
+
+---
+
+## Automaatne salvestamine (valikuline — sina aktiveerid ise)
+
+Kui tahad, et muudatused committuksid ja pushiksid GitHubi automaatselt — et sa ei unustaks pärast redigeerimist — saad lisada Claude Code **"Stop" hook'i**, mis käivitab `git` salvestamise iga kord, kui Claude vastuse lõpetab.
+
+See on **masina-spetsiifiline eelistus**, seega pane see `.claude/settings.local.json` faili (mitte jagatud `settings.json`-i). Nii ei pärandu automaatika neile, kes malli kloonivad. Turvakaalutlustel ei seadista AI seda sinu eest — loo kaks faili ise (~1 min):
+
+**1. `.claude/hooks/auto-commit.ps1`** — turvaline, valveklauslitega skript:
+
+```powershell
+$ErrorActionPreference = 'SilentlyContinue'
+if ((git rev-parse --is-inside-work-tree 2>$null) -ne 'true') { exit 0 }
+if (-not (git status --porcelain 2>$null)) { exit 0 }
+git add -A 2>$null
+git commit -m "auto: salvestatud $(Get-Date -Format 'yyyy-MM-dd HH:mm')" --no-verify 2>$null | Out-Null
+if (git remote 2>$null | Select-String -Pattern '^origin$' -Quiet) { git push 2>$null | Out-Null }
+exit 0
+```
+
+**2. `.claude/settings.local.json`** — seob hook'i (see fail on `.gitignore`-s):
+
+```json
+{
+  "hooks": {
+    "Stop": [
+      { "hooks": [ {
+        "type": "command",
+        "shell": "powershell",
+        "command": "powershell -NoProfile -File .claude/hooks/auto-commit.ps1",
+        "statusMessage": "Salvestan muudatused..."
+      } ] }
+    ]
+  }
+}
+```
+
+> ⚠️ See käivitab `git push` automaatselt iga sessiooni lõpus. `.env` ja `*-service-account.json` on `.gitignore`-s, nii et võtmeid ei pushita. Aktiveeri ainult siis, kui sa seda päriselt tahad.
 
 ---
 

@@ -1,8 +1,18 @@
+# Credentials — NEVER commit these
 .env
 .env.local
+*-service-account.json
+gtm-service-account.json
+credentials.json
+
+# Local-only Claude Code config (machine-specific hooks, etc.)
+.claude/settings.local.json
+
+# OS / tooling noise
 .DS_Store
 *.log
 __pycache__/
 node_modules/
-.claude/settings.local.json
+
+# Generated
 audits/

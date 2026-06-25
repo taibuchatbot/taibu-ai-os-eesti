@@ -49,6 +49,46 @@ Millal iga pind rutiinselt puutub:
 
 ---
 
+## Eesti turu laiendusrajad
+
+Komplekt sisaldab juba EE finantsvirna API juhendeid (`references/merit-aktiva-api.md`, `montonio-api.md`, `pipedrive-api.md`). Siin on tüüpilised järgmised sammud Eesti väikeettevõttele, prioriteetsuse järjekorras:
+
+| Vajadus | Tööriist Eestis | Mehhanism | Kust alustada |
+|---|---|---|---|
+| Raamatupidamine + e-arve | Merit Aktiva | `skript` + `.env` | `references/merit-aktiva-api.md` |
+| Maksed (pangalink) | Montonio | `skript` + `.env` | `references/montonio-api.md` |
+| CRM / müügitoru | Pipedrive | `skript` või `mcp` | `references/pipedrive-api.md` |
+| Reklaam (suurim kanal EE-s) | Meta (Facebook/Instagram) Ads | `skript` | `npx skills find facebook ads` |
+| Analüütika / jälgimine | Google Tag Manager + GA4 | `skript` (teenusekonto) | `npx skills find tag manager` |
+| E-arve operaator | Omniva / Telema / Unifiedpost | `skript`/`eksport` | operaatori dokumentatsioon |
+| Riiklikud andmed | Äriregister, EMTA/KMKR | `skript` | avaandmete API |
+
+**Mandaadid:** kõik võtmed lähevad `.env` faili (vt `.env.example` — kopeeri see `.env`-ks ja täida). `.env` on `.gitignore`-s, nii et võtmeid ei laeta kunagi GitHubi.
+
+---
+
+## Oskuste leidmine ja lisamine (`/find-skills`)
+
+Komplekt jääb tahtlikult minimaalseks — 3 põhioskust + `find-skills`. Selle asemel et kõik oskused ette laadida, **tõmba neid nõudmisel**:
+
+```bash
+npx skills find facebook ads        # otsi oskust märksõna järgi
+npx skills add <owner/repo@oskus>   # paigalda oskus
+npx skills check                    # kontrolli uuendusi
+```
+
+Või küsi lihtsalt Claude'ilt "leia mulle oskus X jaoks" ja `/find-skills` oskus juhendab. Sirvi: https://skills.sh
+
+**Näide reaalsest instantsist:** näidisettevõte (Z500) ehitas selle malli peale turundusvirna — `facebook-ads`, `google-tagmanager`, `cro`, `copywriting`, `ab-testing` oskused pluss Meta Marketing API ja GTM skriptid `scripts/` kaustas. Need on **instantsi-spetsiifilised** (kõvakodeeritud reklaamikontod, GTM konteiner) — seetõttu neid malli ei kaasata. Sinu ettevõte tõmbab `find-skills` kaudu just need, mida vajab.
+
+---
+
+## Automaatne commit + push (valikuline)
+
+Kui tahad, et muudatused salvestuksid GitHubi automaatselt (et sa ei unustaks pärast redigeerimist), saad lisada Claude Code "Stop" hook'i. **See on võimas mehhanism — käivitab `git push` automaatselt**, seega aktiveeri see teadlikult ja ainult oma masinal `.claude/settings.local.json` kaudu (mitte jagatud `settings.json`-is). Vt README jaotist "Automaatne salvestamine".
+
+---
+
 ## Mida MITTE lisada
 
 Antimustrid. Need tunduvad kasulikud, kuid rikuvad struktuuri:

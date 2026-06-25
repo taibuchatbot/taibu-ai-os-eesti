@@ -18,5 +18,7 @@ Register kõikidest süsteemidest, millele sinu Taibu AI OS ligi pääseb. Täid
 - Tulu/Raamatupidamine: [Merit Aktiva](references/merit-aktiva-api.md) — Eesti populaarseim raamatupidamistarkvara
 - Maksed: [Montonio](references/montonio-api.md) — pangalink, kaardimaksed, järelmaks
 - CRM: [Pipedrive](references/pipedrive-api.md) — Eestis asutatud CRM, globaalselt kasutusel
+- Reklaam: Meta (Facebook/Instagram) Ads — suurim tasuline kanal EE väikeettevõtetes. Oskus: `npx skills find facebook ads`
+- Analüütika: Google Tag Manager + GA4 — jälgimine ja konversioonid. Oskus: `npx skills find tag manager`
 
-Uue tööriista ühendamisel salvesta ka `references/{tööriist}-api.md` — dokumenteeri API lõpp-punktid, auth ja tüüpilised päringud üks kord, kasuta igavesti.
+Mandaadid lähevad `.env` faili (vt `.env.example`). Uue tööriista ühendamisel salvesta ka `references/{tööriist}-api.md` — dokumenteeri API lõpp-punktid, auth ja tüüpilised päringud üks kord, kasuta igavesti.
