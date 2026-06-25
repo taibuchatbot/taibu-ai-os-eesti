@@ -105,9 +105,14 @@ taibu-ai-os-eesti/
 ├── context/                         ← Sinust, sinu ärist (täidetud /onboard poolt)
 ├── references/
 │   ├── 3ms-framework.md             ← Operaatori aju (EN)
-│   ├── pipedrive-api.md             ← Pipedrive API juhend (EN)
-│   ├── merit-aktiva-api.md          ← Merit Aktiva API juhend (EN)
-│   └── montonio-api.md              ← Montonio API juhend (EN)
+│   ├── merit-aktiva-api.md          ← Raamatupidamine + e-arve
+│   ├── montonio-api.md              ← Maksed (pangalink)
+│   ├── pipedrive-api.md             ← CRM
+│   ├── meta-ads-api.md              ← Meta (Facebook/Instagram) reklaam
+│   ├── google-ads-api.md           ← Google Ads
+│   ├── gtm-api.md                   ← Google Tag Manager (jälgimine)
+│   ├── gmail-api.md                 ← Gmail (MCP / API)
+│   └── google-drive-api.md          ← Google Drive (MCP / API)
 ├── decisions/
 │   └── log.md                       ← Otsuste logi
 ├── archives/                        ← Vana materjal. Ära kustuta. Tõsta siia.

@@ -79,7 +79,21 @@ npx skills check                    # kontrolli uuendusi
 
 Või küsi lihtsalt Claude'ilt "leia mulle oskus X jaoks" ja `/find-skills` oskus juhendab. Sirvi: https://skills.sh
 
-**Näide reaalsest instantsist:** näidisettevõte (Z500) ehitas selle malli peale turundusvirna — `facebook-ads`, `google-tagmanager`, `cro`, `copywriting`, `ab-testing` oskused pluss Meta Marketing API ja GTM skriptid `scripts/` kaustas. Need on **instantsi-spetsiifilised** (kõvakodeeritud reklaamikontod, GTM konteiner) — seetõttu neid malli ei kaasata. Sinu ettevõte tõmbab `find-skills` kaudu just need, mida vajab.
+### Soovituslikud oskused Eesti ärile
+
+Need on üldised, läbiproovitud oskused (`vercel-labs/agent-skills`, 100k+ paigaldust). **Me ei kaasa neid malli** — neid hoitakse upstreamis värskena ja sa paigaldad ainult need, mida vajad. Üks käsk:
+
+```bash
+npx skills add vercel-labs/agent-skills@copywriting      # müügiteksti kirjutamine (avaleht, maandumisleht)
+npx skills add vercel-labs/agent-skills@cro              # konversioonimäära optimeerimine
+npx skills add vercel-labs/agent-skills@ab-testing       # A/B testide planeerimine
+npx skills add vercel-labs/agent-skills@facebook-ads     # Meta reklaamikampaaniate strateegia + copy
+npx skills add vercel-labs/agent-skills@modern-web-design # veebidisaini juhend
+```
+
+Paaritu need vastavate API juhenditega: `facebook-ads` oskus + `references/meta-ads-api.md` ühenduseks; `cro`/`copywriting` + `references/gtm-api.md` mõõtmiseks.
+
+**Näide reaalsest instantsist:** näidisettevõte (Z500) ehitas selle malli peale just sellise turundusvirna — ülaltoodud oskused pluss Meta Marketing API ja GTM skriptid `scripts/` kaustas. Skriptid ise olid **instantsi-spetsiifilised** (kõvakodeeritud reklaamikontod, GTM konteiner) — seetõttu malli kaasame **ühenduse juhendid** (`references/*-api.md`), mitte kõvakodeeritud skripte. Sinu ettevõte kirjutab skriptid oma kontode vastu juhendi põhjal.
 
 ---
 

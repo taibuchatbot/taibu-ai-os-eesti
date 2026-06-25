@@ -67,6 +67,7 @@ Kui sisestus on valmis, genereeri need failid (või uuenda uuesti käivitamisel)
 4. **`references/voice.md`** — K2-st. Kleebi näidised sõna-sõnalt lühikese päisega, mis selgitab nende kasutust ("Kasuta seda registrit mustandites; ära võltsida häält välise sisu jaoks ilma mulle näitamata").
 5. **`connections.md`** — täida 7-rea tabel K4-K7 vastustest. Iga rida saab `mehhanism: pole veel ühendatud`, `auth: —`, `viimati kontrollitud: —`. Kasutaja ühendab tööriistad 2. päeval.
 6. **`CLAUDE.md`** — täida kõik `{{...}}` kohahoidjad. Asenda kasutaja nimi, prioriteet, hääleregistri kokkuvõte, ühenduste lühikokkuvõte ja keel (küsi kui pole mainitud — "Eesti või inglise?").
+7. **`.env`** — kui faili veel pole, loo see `.env.example` koopiana (`cp .env.example .env`). Ära küsi võtmeid Day-1-l — fail jääb tühjade kohahoidjatega. Seejärel **juhenda kasutajat lühidalt**: ütle, millised read tema K4-K7 vastuste põhjal täita tuleb (nt "Sa nimetasid Merit Aktiva ja Pipedrive — täida `MERIT_*` ja `PIPEDRIVE_*` read `.env`-s, ülejäänu jäta tühjaks"). Iga tööriista võtme hankimise juhend on vastavas `references/{tööriist}-api.md` failis. `.env` on `.gitignore`-s — võtmeid ei laeta kunagi GitHubi.
 
 ### Samm 4: Sulgemisekraan
 
@@ -76,7 +77,7 @@ Prindi üks ekraan. Maksimaalselt kolm rida:
 ✓ 1. päev tehtud. Sinu Taibu AI OS teab, kes sa oled, mida müüd, mis on prioriteedid ja kuidas kõlad.
 
 Täna: küsi minult — "millele peaksin sel nädalal keskenduma?"
-Homme: vali üks tööriist connections.md-st ja ühenda see (MCP install või kirjuta väike API skript + salvesta references/{tööriist}-api.md).
+Homme: täida .env vajalike võtmetega ja ühenda üks tööriist connections.md-st (Gmail/Drive = MCP paari klikiga; Merit/Montonio/Pipedrive = API võti references/{tööriist}-api.md juhendi järgi).
 7. päev: käivita /audit, et näha oma skoori.
 ```
 

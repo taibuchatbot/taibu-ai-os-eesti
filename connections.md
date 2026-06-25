@@ -14,11 +14,19 @@ Register kõikidest süsteemidest, millele sinu Taibu AI OS ligi pääseb. Täid
 
 **Mehhanismi valikud:** `mcp` (MCP server), `skript` (Python/Bash API kaudu, `scripts/` kaustas), `eksport` (CSV/JSON dump), `võti+viide` (`.env` võti + `references/{tööriist}-api.md` juhend), `pole veel ühendatud`.
 
-**Eesti turu soovitused:**
-- Tulu/Raamatupidamine: [Merit Aktiva](references/merit-aktiva-api.md) — Eesti populaarseim raamatupidamistarkvara
-- Maksed: [Montonio](references/montonio-api.md) — pangalink, kaardimaksed, järelmaks
-- CRM: [Pipedrive](references/pipedrive-api.md) — Eestis asutatud CRM, globaalselt kasutusel
-- Reklaam: Meta (Facebook/Instagram) Ads — suurim tasuline kanal EE väikeettevõtetes. Oskus: `npx skills find facebook ads`
-- Analüütika: Google Tag Manager + GA4 — jälgimine ja konversioonid. Oskus: `npx skills find tag manager`
+**Eesti turu soovitused ja valmis ühenduse juhendid:**
 
-Mandaadid lähevad `.env` faili (vt `.env.example`). Uue tööriista ühendamisel salvesta ka `references/{tööriist}-api.md` — dokumenteeri API lõpp-punktid, auth ja tüüpilised päringud üks kord, kasuta igavesti.
+| Domeen | Tööriist | Juhend | Mehhanism |
+|---|---|---|---|
+| Tulu / Raamatupidamine | Merit Aktiva | [merit-aktiva-api.md](references/merit-aktiva-api.md) | `skript` + `.env` |
+| Maksed | Montonio | [montonio-api.md](references/montonio-api.md) | `skript` + `.env` |
+| CRM / müük | Pipedrive | [pipedrive-api.md](references/pipedrive-api.md) | `skript` / `mcp` |
+| Reklaam (suurim EE kanal) | Meta (Facebook/Instagram) Ads | [meta-ads-api.md](references/meta-ads-api.md) | `skript` + `.env` |
+| Reklaam (otsing) | Google Ads | [google-ads-api.md](references/google-ads-api.md) | `skript` + `.env` |
+| Analüütika / jälgimine | Google Tag Manager | [gtm-api.md](references/gtm-api.md) | `skript` (teenusekonto) |
+| Kommunikatsioon | Gmail | [gmail-api.md](references/gmail-api.md) | `mcp` (lihtne) / `skript` |
+| Teadmus / failid | Google Drive | [google-drive-api.md](references/google-drive-api.md) | `mcp` (lihtne) / `skript` |
+
+Lihtne reegel: **Gmail ja Drive** ühenda esmalt MCP kaudu (paari klikiga, võtmeid pole vaja). **Merit, Montonio, Pipedrive, Meta, Google Ads, GTM** vajavad API võtmeid → `.env` fail.
+
+Mandaadid lähevad `.env` faili (vt `.env.example`). Vastavad turundusoskused (strateegia + copy) paigalda nõudmisel — vt `EXPANSIONS.md` jaotist "Soovituslikud oskused Eesti ärile". Uue tööriista ühendamisel salvesta ka `references/{tööriist}-api.md` — dokumenteeri API lõpp-punktid, auth ja tüüpilised päringud üks kord, kasuta igavesti.
