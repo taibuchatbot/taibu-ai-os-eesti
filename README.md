@@ -101,7 +101,7 @@ taibu-ai-os-eesti/
 ├── LICENSE
 ├── .gitignore
 ├── .env.example                     ← Mandaatide mall — kopeeri .env-ks ja täida
-├── aios-intake.md                   ← /onboard allikas. Muuda ja käivita uuesti igal ajal.
+├── intake.md                   ← /onboard allikas. Muuda ja käivita uuesti igal ajal.
 ├── connections.md                   ← Register kõikidest süsteemidest
 ├── context/                         ← Sinust, sinu ärist (täidetud /onboard poolt)
 ├── references/

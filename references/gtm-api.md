@@ -15,10 +15,10 @@
 
 ### 2. Create a service account + key
 1. APIs & Services → Credentials → **Create Credentials → Service account**
-2. Name it (e.g. `aios-gtm`). Create.
+2. Name it (e.g. `taibu-gtm`). Create.
 3. Open it → **Keys** → **Add Key → Create new key → JSON** → download
 4. Save the file as **`gtm-service-account.json`** in the project root (it is gitignored)
-5. Copy the service account **email** (e.g. `aios-gtm@yourproject.iam.gserviceaccount.com`)
+5. Copy the service account **email** (e.g. `taibu-gtm@yourproject.iam.gserviceaccount.com`)
 
 ### 3. Grant access in GTM
 1. GTM → **Admin** → (Account) **User Management** → **+** → add the service account email

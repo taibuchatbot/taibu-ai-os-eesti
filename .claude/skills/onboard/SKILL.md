@@ -1,11 +1,11 @@
 ---
 name: onboard
-description: Kasuta Taibu AI OS Eesti 1. päeval, kui keegi ütleb "seadista mind", "alustame", "täida minu Taibu AI OS" või on just repo klooninud. Kombineeritud viisard — käitab 7-küsimuse intervjuu JA seadistab 1. päeva failistruktuuri lõpus. Idempotentne — käivita uuesti igal ajal pärast aios-intake.md muutmist.
+description: Kasuta Taibu AI OS Eesti 1. päeval, kui keegi ütleb "seadista mind", "alustame", "täida minu Taibu AI OS" või on just repo klooninud. Kombineeritud viisard — käitab 7-küsimuse intervjuu JA seadistab 1. päeva failistruktuuri lõpus. Idempotentne — käivita uuesti igal ajal pärast intake.md muutmist.
 ---
 
 ## Mida see oskus teeb
 
-Üks kombineeritud viisard. Loeb või kirjutab `aios-intake.md` (kanooniline sisestus), viib läbi 7-küsimuse intervjuu kui fail pole täidetud, seejärel seadistab 1. päeva failistruktuuri. Eraldi `/scaffold-from-intake` oskust pole — see on üks voog.
+Üks kombineeritud viisard. Loeb või kirjutab `intake.md` (kanooniline sisestus), viib läbi 7-küsimuse intervjuu kui fail pole täidetud, seejärel seadistab 1. päeva failistruktuuri. Eraldi `/scaffold-from-intake` oskust pole — see on üks voog.
 
 **Vau-moment:** lõpus soovita sulgemisprompt *"Proovi seda — küsi minult: millele peaksin sel nädalal keskenduma?"* Kasutaja käivitab selle üks kord. See on vau. Prompt ise istutab Mõtteviisi raamistiku (Vaikimisi Nihe) nende jaoks, et nad selle sisestaksid.
 
@@ -18,7 +18,7 @@ description: Kasuta Taibu AI OS Eesti 1. päeval, kui keegi ütleb "seadista min
 
 ### Samm 1: Loe sisestust
 
-Loe `aios-intake.md`. Kontrolli, millised K1-K7 sektsioonid on täidetud vs. `[Sinu vastus siia]` kohahoidjatega.
+Loe `intake.md`. Kontrolli, millised K1-K7 sektsioonid on täidetud vs. `[Sinu vastus siia]` kohahoidjatega.
 
 - **Kõik täidetud** → jäta Samm 2 vahele, mine Samm 3-sse (seadistus).
 - **Mõned täidetud** → küsi kasutajalt: "Näen, et K1, K3, K4 on vastatud. Kas täita ülejäänud nüüd, või seadistada olemasolevaga?" Nende otsus.
@@ -26,7 +26,7 @@ Loe `aios-intake.md`. Kontrolli, millised K1-K7 sektsioonid on täidetud vs. `[S
 
 ### Samm 2: Intervjuu (7 küsimust, kõva piir)
 
-Küsi ükshaaval. Kirjuta iga vastus kohe `aios-intake.md`-sse (et kasutaja saaks katkestuse korral jätkata).
+Küsi ükshaaval. Kirjuta iga vastus kohe `intake.md`-sse (et kasutaja saaks katkestuse korral jätkata).
 
 **K1 — Kes sa oled, mida müüd, kellele müüd?**
 Identiteet, pakkumine, ideaalne klient. Üks lõik kummagi kohta on sobiv.

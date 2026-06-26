@@ -16,7 +16,7 @@ Taibu AI OS struktuur peaks sarnanema hästi juhitud väikeettevõttele. Mitte h
 | `archives/` | Vanad failid. Ära kustuta — tõsta siia. |
 | `connections.md` | Register kõikidest ühendatud süsteemidest. |
 | `.claude/skills/` | Oskused: `/onboard`, `/audit`, `/level-up`. Lisa juurde `/level-up` kaudu. |
-| `aios-intake.md` | `/onboard` allikas. Muuda ja käivita uuesti igal ajal. |
+| `intake.md` | `/onboard` allikas. Muuda ja käivita uuesti igal ajal. |
 | `CLAUDE.md` | Peamine käitamisjuhend. Täidetud `/onboard` poolt. Muuda kui roll/hääl muutub. |
 
 ---
@@ -94,7 +94,7 @@ npx skills add vercel-labs/agent-skills@modern-web-design # veebidisaini juhend
 
 Paaritu need vastavate API juhenditega: `facebook-ads` oskus + `references/meta-ads-api.md` ühenduseks; `cro`/`copywriting` + `references/gtm-api.md` mõõtmiseks.
 
-**Näide reaalsest instantsist:** näidisettevõte (Z500) ehitas selle malli peale just sellise turundusvirna — ülaltoodud oskused pluss Meta Marketing API ja GTM skriptid `scripts/` kaustas. Skriptid ise olid **instantsi-spetsiifilised** (kõvakodeeritud reklaamikontod, GTM konteiner) — seetõttu malli kaasame **ühenduse juhendid** (`references/*-api.md`), mitte kõvakodeeritud skripte. Sinu ettevõte kirjutab skriptid oma kontode vastu juhendi põhjal.
+**Näide reaalsest instantsist:** üks näidisettevõte ehitas selle malli peale just sellise turundusvirna — ülaltoodud oskused pluss Meta Marketing API ja GTM skriptid `scripts/` kaustas. Skriptid ise olid **instantsi-spetsiifilised** (kõvakodeeritud reklaamikontod, GTM konteiner) — seetõttu malli kaasame **ühenduse juhendid** (`references/*-api.md`), mitte kõvakodeeritud skripte. Sinu ettevõte kirjutab skriptid oma kontode vastu juhendi põhjal.
 
 ---
 
