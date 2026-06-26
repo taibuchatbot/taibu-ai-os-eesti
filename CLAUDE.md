@@ -12,6 +12,7 @@ Loe `references/3ms-framework.md` üks kord läbi. Nii mõtleb {{Sinu Nimi}} AI 
 - `/audit` — Nelja C lünkade aruanne. Käivita 7. päeval, siis iganädalaselt.
 - `/level-up` — Iganädalane 3M-i intervjuu. Leia üks automatiseering, defineeri see, teosta. Üks nädalas.
 - `/find-skills` — Leia ja paigalda uusi oskusi ökosüsteemist (`npx skills`), kui vajad uut võimet.
+- `/make-blueprint` — Genereeri imporditav Make.com automatiseeringu blueprint JSON. Kirjelda voog, saa valmis stsenaarium.
 
 ## Kus asjad asuvad
 

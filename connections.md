@@ -29,4 +29,6 @@ Register kõikidest süsteemidest, millele sinu Taibu AI OS ligi pääseb. Täid
 
 Lihtne reegel: **Gmail ja Drive** ühenda esmalt MCP kaudu (paari klikiga, võtmeid pole vaja). **Merit, Montonio, Pipedrive, Meta, Google Ads, GTM** vajavad API võtmeid → `.env` fail.
 
+**Automatiseerimise kiht (liim tööriistade vahel):** [Make.com](references/make-com.md) — no-code stsenaariumid, mis seovad ülaltoodud tööriistu (nt Montonio makse → Merit arve). Genereeri imporditav blueprint oskusega `/make-blueprint`.
+
 Mandaadid lähevad `.env` faili (vt `.env.example`). Vastavad turundusoskused (strateegia + copy) paigalda nõudmisel — vt `EXPANSIONS.md` jaotist "Soovituslikud oskused Eesti ärile". Uue tööriista ühendamisel salvesta ka `references/{tööriist}-api.md` — dokumenteeri API lõpp-punktid, auth ja tüüpilised päringud üks kord, kasuta igavesti.

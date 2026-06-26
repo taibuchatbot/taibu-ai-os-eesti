@@ -62,6 +62,7 @@ Komplekt sisaldab juba EE finantsvirna API juhendeid (`references/merit-aktiva-a
 | Analüütika / jälgimine | Google Tag Manager + GA4 | `skript` (teenusekonto) | `npx skills find tag manager` |
 | E-arve operaator | Omniva / Telema / Unifiedpost | `skript`/`eksport` | operaatori dokumentatsioon |
 | Riiklikud andmed | Äriregister, EMTA/KMKR | `skript` | avaandmete API |
+| Automatiseerimine (liim) | Make.com | `blueprint` / `skript` | `references/make-com.md` + oskus `/make-blueprint` |
 
 **Mandaadid:** kõik võtmed lähevad `.env` faili (vt `.env.example` — kopeeri see `.env`-ks ja täida). `.env` on `.gitignore`-s, nii et võtmeid ei laeta kunagi GitHubi.
 

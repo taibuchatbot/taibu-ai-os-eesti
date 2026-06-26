@@ -71,6 +71,7 @@ Täielik selgitus: `references/3ms-framework.md`. Oskus `/level-up` käib kõik 
 | `/audit` | Korduv mõtlemisoskus | 7. päev, siis iganädalaselt. Neli C-d aruanne. |
 | `/level-up` | Korduv mõtlemisoskus | 14. päev, siis iganädalaselt. Üks automatiseering nädalas. |
 | `/find-skills` | Avastamine | Millal iganes vajad uut võimet — leiab ja paigaldab oskusi ökosüsteemist (`npx skills`). |
+| `/make-blueprint` | Generaator | Kui tahad Make.com automaatikat — kirjeldad voo, saad imporditava blueprint JSON-i. |
 
 Komplekt jääb tahtlikult minimaalseks. Selle asemel et kõik ette laadida, tõmbad `/find-skills` kaudu täpselt need oskused, mida sinu äri vajab (nt Meta reklaam, GTM analüütika). Vt `EXPANSIONS.md`.
 
@@ -112,7 +113,8 @@ taibu-ai-os-eesti/
 │   ├── google-ads-api.md           ← Google Ads
 │   ├── gtm-api.md                   ← Google Tag Manager (jälgimine)
 │   ├── gmail-api.md                 ← Gmail (MCP / API)
-│   └── google-drive-api.md          ← Google Drive (MCP / API)
+│   ├── google-drive-api.md          ← Google Drive (MCP / API)
+│   └── make-com.md                  ← Make.com automaatika + blueprint JSON
 ├── decisions/
 │   └── log.md                       ← Otsuste logi
 ├── archives/                        ← Vana materjal. Ära kustuta. Tõsta siia.
@@ -123,7 +125,8 @@ taibu-ai-os-eesti/
         ├── onboard/SKILL.md
         ├── audit/SKILL.md
         ├── level-up/SKILL.md
-        └── find-skills/SKILL.md
+        ├── find-skills/SKILL.md
+        └── make-blueprint/SKILL.md
 ```
 
 ### Oskused elavad ühes kohas: `.claude/skills/`
