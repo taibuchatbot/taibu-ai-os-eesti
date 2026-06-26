@@ -14,9 +14,21 @@ Taibu AI OS on sinu isiklik AI "operatsioonisüsteem": see õpib tundma sinu är
 | **VS Code** | Töölaud, kus AI-ga suhtled | Tasuta |
 | **Claude Code laiendus** | Ühendab Claude'i VS Code'iga | Tasuta |
 | **Git + GitHub konto** | Varundus, uuendused (valikuline, soovituslik) | Tasuta |
-| **Taibu AI OS failid** | Mall ise (said selle ostuga) | — |
+| **Taibu AI OS failid** | Mall ise (said selle ostuga, `.zip`) | — |
 
 Kokku: üks tasuline tellimus (Claude Pro), ülejäänu tasuta.
+
+---
+
+## 📥 Lae fail alla (kohe pärast ostu)
+
+Pärast ostu saad **e-mailiga allalaadimise lingi** ja oma **litsentsivõtme**.
+
+- Link kehtib **7 päeva** ja lubab **kuni 3 allalaadimist**. Lae fail alla kohe ja salvesta see kindlasse kohta (nt `Dokumendid`). Tee varukoopia.
+- **Hoia oma litsentsivõti alles** — see on sinu LITSENTS-VOTI.txt failis allalaaditud paketis ja võib vaja minna toe jaoks.
+- Fail on `.zip` — paki see lahti (Samm 5).
+
+> Litsents on isiklik: tohid Tarkvara kasutada oma ettevõtte siseselt, kuid mitte edasi jagada ega müüa (vt `LICENSE`).
 
 ---
 
@@ -72,9 +84,9 @@ Nüüd on Claude Code valmis. Näed VS Code'is Claude'i paneeli (tavaliselt pare
 
 ## Samm 5 — Ava Taibu AI OS
 
-1. Kui said malli **ZIP-failina**, paki see lahti sobivasse kausta (nt `Dokumendid/Taibu AI OS`).
+1. Paki allalaaditud **ZIP-fail** lahti sobivasse kausta (nt `Dokumendid/Taibu AI OS`).
 2. VS Code'is: **File → Open Folder…** → vali Taibu AI OS kaust.
-3. Vasakul näed faile: `CLAUDE.md`, `README.md`, `intake.md`, kaustad `references/`, `context/` jne.
+3. Vasakul näed faile: `CLAUDE.md`, `README.md`, `intake.md`, `LITSENTS-VOTI.txt`, kaustad `references/`, `context/` jne.
 
 ---
 
