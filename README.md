@@ -6,6 +6,8 @@ Tasuta MIT-litsentsiga tööriistakomplekt, mis muudab Claude Code'i sinu isikli
 
 Süsteem personaliseerib end sinu jaoks `/onboard` intervjuu kaudu, seejärel annab kaks korduvat mõtlemisoskust (`/audit`, `/level-up`), et iga nädalaga rohkem automatiseeringuid lisada.
 
+> 👋 **Esimest korda siin? Alusta failist [alusta.md](alusta.md)** — samm-sammuline seadistusjuhend (Claude konto, VS Code, Claude Code laiendus, esimesed sammud). ~30 minutit nullist töötava süsteemini.
+
 ---
 
 ## Edukuse test
