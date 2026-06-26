@@ -15,6 +15,7 @@ Loe `references/3ms-framework.md` üks kord läbi. Nii mõtleb {{Sinu Nimi}} AI 
 - `/make-blueprint` — Genereeri imporditav Make.com automatiseeringu blueprint JSON. Kirjelda voog, saa valmis stsenaarium.
 - `/roast` — Presstesta ideed enne ehitamist. 5-persoona nõukogu rebib idee laiali, Kohtunik annab GO / RESHAPE / KILL otsuse + odavaima testi.
 - `/session-handoff` — Sessiooni lõpus struktureeritud üleandmine, et saaksid `/clear` teha ja järgmine seanss jätkaks sujuvalt.
+- `eesti-keel` — **Alati aktiivne.** Tagab, et kogu eestikeelne väljund kõlab emakeelsena, mitte tõlgituna. Ei pea käivitama — kehtib automaatselt (vt jaotist "Keel").
 
 ## Kus asjad asuvad
 
@@ -42,6 +43,8 @@ Kasuta registrit failist `references/voice.md`. Vabavormis, kuid professionaalne
 ## Keel
 
 Eesti keel (Eesti). Kõik vastused kirjuta eesti keeles, välja arvatud tehniline dokumentatsioon (API juhendid, kood).
+
+**Kohustuslik — `eesti-keel` oskus on alati aktiivne.** Iga eestikeelse väljundi puhul (vestlus, dokumendid, turundustekst, e-mailid) järgi `.claude/skills/eesti-keel/SKILL.md` juhiseid: kirjuta loomulikku, emakeelset eesti keelt, mitte inglise keelest tõlgitud teksti. Väldi AI-lõhna — üleliigset viisakust ("Mul on hea meel aidata"), turunduskeelt, jäika lauseehitust. Vähem sõnu, vähem vaimustust. Kohanda registrit konteksti järgi: `sina` ja vabam toon vestluses; professionaalsem `sina` klientidele ja turunduses; `teie` juriidikas ja ametlikus suhtluses.
 
 ## Kuidas minuga töötad
 

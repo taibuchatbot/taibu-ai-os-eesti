@@ -129,7 +129,7 @@ See on hetk, mil Taibu AI OS õpib sind tundma.
 
 - Loe **`README.md`** — seal on detailsem ülevaade.
 - Küsi otse Claude'ilt VS Code'is — kirjelda probleemi, ta aitab.
-- Tugi / kontakt: **MGR Tech Solutions OÜ** — *(lisa siia oma kontakt/e-mail)*
+- Tugi / kontakt: **MGR Tech Solutions OÜ** — Whatsapp +372 5663 6672
 
 ---
 
