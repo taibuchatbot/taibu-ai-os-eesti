@@ -2,7 +2,9 @@
 
 **Loonud [Martti Mäger](https://github.com/taibuchatbot) / MGR Tech Solutions OÜ**
 
-Tasuta MIT-litsentsiga tööriistakomplekt, mis muudab Claude Code'i sinu isiklikuks **AI operatsioonisüsteemiks**. Sobib kõigile, kes soovivad automatiseerida igapäevast tööd — ettevõtjatele, juhtidele, konsultantidele, loovjatele. Kohandatud Eesti turu tööriistadele (Pipedrive, Merit Aktiva, Montonio).
+Tööriistakomplekt, mis muudab Claude Code'i sinu isiklikuks **AI operatsioonisüsteemiks**. Sobib kõigile, kes soovivad automatiseerida igapäevast tööd — ettevõtjatele, juhtidele, konsultantidele, loovjatele. Kohandatud Eesti turu tööriistadele (Pipedrive, Merit Aktiva, Montonio).
+
+Litsentsitud toode — vt [LICENSE](LICENSE). Kasutamiseks vajalik kehtiv litsents.
 
 Süsteem personaliseerib end sinu jaoks `/onboard` intervjuu kaudu, seejärel annab kaks korduvat mõtlemisoskust (`/audit`, `/level-up`), et iga nädalaga rohkem automatiseeringuid lisada.
 
@@ -172,6 +174,6 @@ Skript ise **on juba komplektis**: `.claude/hooks/auto-commit.ps1` (turvaline, v
 
 ## Litsents
 
-MIT litsents. © 2026 MGR Tech Solutions OÜ. Loonud Martti Mäger.
+**Proprietaarne kommertslitsents.** © 2026 MGR Tech Solutions OÜ. Loonud Martti Mäger. Vt [LICENSE](LICENSE).
 
-Taibu AI OS Eesti on MGR Tech Solutions OÜ toode. Operaatoriks (kasutajaks) võib olla iga eraisik või ettevõte — looja ja õiguste hoidja on MGR Tech Solutions OÜ / Martti Mäger.
+Taibu AI OS Eesti on MGR Tech Solutions OÜ toode. Kehtiva litsentsi ostnud kasutaja tohib Tarkvara kasutada oma ettevõtte siseselt, kuid **ei tohi seda edasi müüa, levitada ega avalikustada**. Looja ja õiguste hoidja on MGR Tech Solutions OÜ / Martti Mäger.

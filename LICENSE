@@ -1,16 +1,101 @@
-MIT Litsents / MIT License
+TAIBU AI OS EESTI — KOMMERTSLITSENTS (PROPRIETAARNE)
+Versioon 1.0
+© 2026 MGR Tech Solutions OÜ. Kõik õigused kaitstud.
 
-Autoriõigus (c) 2026 MGR Tech Solutions OÜ. Loonud Martti Mäger.
-Copyright (c) 2026 MGR Tech Solutions OÜ. Created by Martti Mäger.
+Käesolev litsentsileping ("Leping") sõlmitakse sinu ("Litsentsiaat") ja
+MGR Tech Solutions OÜ (registrikood [REGISTRIKOOD], Eesti Vabariik;
+"Litsentsiaar") vahel. Tarkvara allalaadimise, paigaldamise või kasutamisega
+kinnitad, et oled käesolevate tingimustega nõus. Kui sa tingimustega ei nõustu,
+ära Tarkvara kasuta.
 
-Käesolevaga antakse tasuta luba igale isikule, kes saab selle tarkvara ja sellega seotud dokumentatsioonifailide ("Tarkvara") koopia, tegeleda Tarkvaraga piiranguteta, sealhulgas õigus kasutada, kopeerida, muuta, ühendada, avaldada, levitada, litsentseerida ja/või müüa Tarkvara koopiaid ning lubada isikutel, kellele Tarkvara on tarnitud, teha sama, järgmistel tingimustel:
 
-Ülaltoodud autoriõigusteade ja käesolev loateade lisatakse kõikidesse Tarkvara koopiatesse või olulistesse osadesse.
+1. DEFINITSIOONID
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+"Tarkvara" — Taibu AI OS Eesti mall tervikuna: kõik failid, mallid, oskused
+(skills), juhendid, viited (references), dokumentatsioon ja nende uuendused.
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+"Litsents" — käesoleva Lepinguga antud piiratud kasutusõigus.
 
-TARKVARA ON ESITATUD "NAGU ON", ILMA IGASUGUSE GARANTIITA, OTSESE VÕI KAUDSE, SEALHULGAS GARANTIIDETA KAUBASTATAVUSE, KINDLAKS OTSTARBEKS SOBIVUSE JA MITTERIKKUMISE KOHTA. MGR TECH SOLUTIONS OÜ EGA MARTTI MÄGER EI VASTUTA MINGITE NÕUETE, KAHJUDE VÕI MUU VASTUTUSE EEST, KAS LEPINGULISTEST, LEPINGUVÄLISTEST VÕI MUUDEST TOIMINGUTEST TULENEVALT, MIS TEKIVAD SEOSES TARKVARAGA.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+2. LITSENTSI ANDMINE
+
+Tasumisel annab Litsentsiaar Litsentsiaadile tähtajatu, mitte-eksklusiivse,
+mitte-edasiantava ja tühistatava õiguse:
+
+  (a) paigaldada ja kasutada Tarkvara ühe (1) ettevõtte või füüsilise isiku
+      siseseks äriotstarbeliseks kasutamiseks;
+  (b) Tarkvara muuta ja kohandada oma sisemiseks kasutamiseks.
+
+
+3. PIIRANGUD
+
+Litsentsiaat EI tohi:
+
+  (a) Tarkvara ega selle osi edasi müüa, levitada, jagada, rentida, liisida,
+      laenata ega sublitsentseerida;
+  (b) Tarkvara avalikult kättesaadavaks teha (sh avalik koodihoidla,
+      failijagamisteenus, foorum, kursus);
+  (c) eemaldada ega muuta autoriõiguse, kaubamärgi ega omandiõiguse teateid;
+  (d) kasutada Tarkvara konkureeriva või olemuselt sarnase toote loomiseks,
+      mida pakutakse kolmandatele isikutele;
+  (e) anda oma Litsentsi üle kolmandale isikule ilma Litsentsiaari eelneva
+      kirjaliku nõusolekuta.
+
+
+4. OMANDIÕIGUS
+
+Tarkvara on Litsentsiaari intellektuaalne omand ja jääb täielikult Litsentsiaari
+omandiks. Käesolev Leping ei anna üle ühtegi omandiõigust, vaid üksnes punktis 2
+kirjeldatud piiratud kasutusõiguse. Kõik õigused, mida käesolevaga selgesõnaliselt
+ei anta, jäävad Litsentsiaarile.
+
+
+5. ANDMED JA MANDAADID
+
+Tarkvara kasutab Litsentsiaadi enda API võtmeid ja andmeid (`.env` fail).
+Litsentsiaar ei oma ligipääsu Litsentsiaadi mandaatidele ega andmetele ega
+vastuta nende ega kolmandate osapoolte teenuste (nt Merit Aktiva, Montonio,
+Pipedrive, Meta, Google) toimimise eest.
+
+
+6. GARANTII PUUDUMINE
+
+Tarkvara pakutakse "NAGU ON" ja "NAGU SAADAVAL", ilma igasuguse otsese või
+kaudse garantiita, sealhulgas garantiideta kaubastatavuse, kindlaks otstarbeks
+sobivuse ega mitterikkumise kohta. Litsentsiaar ei garanteeri, et Tarkvara on
+katkematu, veatu ega vastab Litsentsiaadi ootustele.
+
+
+7. VASTUTUSE PIIRAMINE
+
+Kohalduva õigusega lubatud ulatuses ei vastuta Litsentsiaar ühegi kaudse,
+juhusliku, eri- ega tuleneva kahju eest (sh saamata jäänud tulu, andmekadu,
+äritegevuse katkemine), mis tuleneb Tarkvara kasutamisest või võimetusest seda
+kasutada. Litsentsiaari koguvastutus ei ületa summat, mille Litsentsiaat on
+Litsentsi eest tasunud.
+
+
+8. LÕPETAMINE
+
+Litsents lõpeb automaatselt, kui Litsentsiaat rikub mõnda käesoleva Lepingu
+tingimust. Lõppemisel kohustub Litsentsiaat viivitamata lõpetama Tarkvara
+kasutamise ja kustutama kõik selle koopiad.
+
+
+9. KOHALDATAV ÕIGUS
+
+Käesolevale Lepingule kohaldatakse Eesti Vabariigi õigust. Lepingust tulenevad
+vaidlused lahendatakse Harju Maakohtus.
+
+
+10. KONTAKT
+
+MGR Tech Solutions OÜ
+[e-mail / kontakt]
+
+
+--------------------------------------------------------------------------------
+An English translation of this license is available on request. In case of any
+dispute, the Estonian text prevails. This is a proprietary commercial license:
+the Software may be used by the paying licensee but not redistributed or resold.
+--------------------------------------------------------------------------------
