@@ -13,6 +13,8 @@ Loe `references/3ms-framework.md` üks kord läbi. Nii mõtleb {{Sinu Nimi}} AI 
 - `/level-up` — Iganädalane 3M-i intervjuu. Leia üks automatiseering, defineeri see, teosta. Üks nädalas.
 - `/find-skills` — Leia ja paigalda uusi oskusi ökosüsteemist (`npx skills`), kui vajad uut võimet.
 - `/make-blueprint` — Genereeri imporditav Make.com automatiseeringu blueprint JSON. Kirjelda voog, saa valmis stsenaarium.
+- `/roast` — Presstesta ideed enne ehitamist. 5-persoona nõukogu rebib idee laiali, Kohtunik annab GO / RESHAPE / KILL otsuse + odavaima testi.
+- `/session-handoff` — Sessiooni lõpus struktureeritud üleandmine, et saaksid `/clear` teha ja järgmine seanss jätkaks sujuvalt.
 
 ## Kus asjad asuvad
 

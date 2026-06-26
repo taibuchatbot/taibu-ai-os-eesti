@@ -76,6 +76,8 @@ Täielik selgitus: `references/3ms-framework.md`. Oskus `/level-up` käib kõik 
 | `/level-up` | Korduv mõtlemisoskus | 14. päev, siis iganädalaselt. Üks automatiseering nädalas. |
 | `/find-skills` | Avastamine | Millal iganes vajad uut võimet — leiab ja paigaldab oskusi ökosüsteemist (`npx skills`). |
 | `/make-blueprint` | Generaator | Kui tahad Make.com automaatikat — kirjeldad voo, saad imporditava blueprint JSON-i. |
+| `/roast` | Otsustustugi | Enne ehitamist — 5-persoona nõukogu presstestib idee, Kohtunik annab GO / RESHAPE / KILL otsuse. |
+| `/session-handoff` | Tööriist | Sessiooni lõpus — struktureeritud üleandmine, et järgmine seanss jätkaks sujuvalt. |
 
 Komplekt jääb tahtlikult minimaalseks. Selle asemel et kõik ette laadida, tõmbad `/find-skills` kaudu täpselt need oskused, mida sinu äri vajab (nt Meta reklaam, GTM analüütika). Vt `EXPANSIONS.md`.
 
@@ -130,7 +132,9 @@ taibu-ai-os-eesti/
         ├── audit/SKILL.md
         ├── level-up/SKILL.md
         ├── find-skills/SKILL.md
-        └── make-blueprint/SKILL.md
+        ├── make-blueprint/SKILL.md
+        ├── roast/SKILL.md
+        └── session-handoff/SKILL.md
 ```
 
 ### Oskused elavad ühes kohas: `.claude/skills/`
